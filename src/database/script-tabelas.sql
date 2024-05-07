@@ -1,3 +1,5 @@
+-- Active: 1713288107577@@127.0.0.1@3306@parkour
+
 CREATE DATABASE parkour;
 
 USE parkour;
@@ -8,3 +10,5 @@ CREATE TABLE usuario (
 	emailUsuario VARCHAR(45),
 	senhaUsuario VARCHAR(45)
 );
+
+SELECT * from usuario;
