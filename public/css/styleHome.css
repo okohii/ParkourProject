@@ -1,0 +1,181 @@
+* {
+  scroll-behavior: smooth;
+  font-family: JetBrains Mono;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  background-color: #031019;
+  border-bottom: 3px solid #E32D60;
+  width: 100%;
+  position: fixed;
+  top: 0;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+  justify-content: space-between;
+  width: 50%;
+}
+
+nav ul a {
+  font-style: none;
+  font-weight: 900;
+  color: white;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+nav ul a:hover{
+  font-style: none;
+  font-weight: 900;
+  color: #E0E330;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+header {
+  display: flex;
+  color: white;
+  width: 100%;
+  height: 715px;
+  background-image: url('../assets/backgroundHeader.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  background-attachment: fixed;
+  border-bottom: 3px solid #E32D60;
+}
+
+#tituloHeader {
+  display: flex;
+  width: 60%;
+  text-align: center;
+  justify-content: center;
+}
+
+header h1 {
+  display: flex;
+  color: white;
+  font-size: 80px;
+  width: fit-content;
+  justify-content: center;
+  align-items: center;
+  height: 650px;
+  font-weight: 900;
+}
+
+.sectionSobre {
+  display: flex;
+  width: 100%;
+  height: 500px;
+  background-color: #031019;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.sectionSobre h1 {
+  display: flex;
+  color: #E0E330;
+  font-size: 64px;
+  justify-content: center;
+  font-weight: 900;
+  margin-top: -15px;
+}
+
+.sectionSobre p {
+  color: white;
+  font-size: 32px;
+  text-align: center;
+  margin-top: -20px;
+}
+
+#benef {
+  display: flex;
+  background-image: url('../assets/backgroundBenef.png');
+  background-size: cover;
+  width: 100%;
+  height: 850px;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-attachment: fixed;
+}
+
+#contentBenef {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 200px;
+}
+
+.cardBenef {
+  display: flex;
+  width: 500px;
+  height: 600px;
+  background-color: #031019;
+  border: 3px solid #E32D60;
+  border-radius: 3px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+}
+
+.sectionBenef h1 {
+  display: flex;
+  color: #E0E330;
+  font-size: 64px;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.cardBenef h2 {
+  font-size: 50px;
+  margin-top: 0px;
+  font-weight: 900;
+}
+
+.cardBenef ul {
+  font-size: 25px;
+  text-align: center;
+  list-style: none;
+  margin-left: -30px;
+}
+
+.sectionMod {
+  display: flex;
+  background-color: #031019;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sectionMod h1 {
+  display: flex;
+  color: #E0E330;
+  font-size: 64px;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.cardMod {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  height: 300px;
+  background-color: #E0E330;
+  border: #E32D60 solid;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
