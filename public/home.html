@@ -5,35 +5,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/styleHome.css">
-  <script src="./js/home.js"></script>
   <title>HOME</title>
+  <audio id="meuAudio" autoplay loop>
+    <source src="./assets/somAmbiente.mp3" type="audio/mp3">
+  </audio>
 </head>
 
 <body>
-  <!-- NAVBAR -->
-  <nav>
-    <ul>
-      <li><a href="#home">HOME.</a></li>
-      <li><a href="#sobre">SOBRE.</a></li>
-      <li><a href="#benef">BENEF.</a></li>
-      <li><a href="#modalidade">MODALIDADE.</a></li>
-      <li><a href="#contato">CONTATO.</a></li>
-    </ul>
-  </nav>
-
+  
   <!-- HEADER -->
-  <header id="home">
+  <header id="header">
+    <!-- NAVBAR -->
+    <nav class="nav">
+        <a id="navHome" href="#header" class="active">HOME.</a>
+        <a id="navSobre" href="#sobre">SOBRE.</a>
+        <a id="navBenef" href="#benef">BENEF.</a>
+        <a id="navModalidade" href="#modalidade">MODALIDADE.</a>
+        <a id="navDashboard" href="#dashboard">DASHBOARD.</a>
+        <a id="navContato" href="#contato">CONTATO.</a>
+    </nav>
     <div id="tituloHeader">
       <h1>SEJA LEVE EM CORPO E MENTE.</h1>
     </div>
+    <video src="./assets/videoParkourHeader.mp4" autoplay loop></video>
   </header>
+  <!-- <img src="./assets/davidbelle.png" id="imgDavid"> -->
   <section id="sobre" class="sectionSobre">
     <h1>O QUE É?</h1>
     <p>Um esporte inovador, que pode ser praticado em qualquer espaço. O Parkour consiste em usar o próprio corpo como
       equipamento e tem como objetivo ultrapassar obstáculos urbanos ou naturais das cidades, como degraus, rampas,
       árvores, muros e outros, fazendo movimentos diversos que unem força e velocidade.</p>
   </section>
-
+  <!-- <img src="./assets/jasonpaul.png" id="imgJason"> -->
   <section id="benef" class="sectionBenef">
     <h1>BENEFÍCIOS</h1>
     <div id="contentBenef">
@@ -74,14 +77,57 @@
 
   <section id="modalidade" class="sectionMod">
     <h1>MODALIDADES</h1>
-    <div class="cardMod" id="cardClassic"><video src=""></video></div>
-    <div class="cardMod" id="cardFreeRunning"><video src=""></video></div>
-    <div class="cardMod" id="cardClimbing"><video src=""></video></div>
+    <div class="cardMod" id="cardClassic" onclick="redirectClassic()">CLASSIC</div>
+    <div class="cardMod" id="cardFreeRunning" onclick="redirectFreeRunning()">FREE RUNNING</div>
+    <div class="cardMod" id="cardClimbing" onclick="redirectClimbing()" target>CLIMBING</div>
+  </section>
+
+  <section id="dashboard" class="sectionDashboard">
+    <h1>QUAL SUA MODALIDADE?</h1>
+
   </section>
 
   <section id="contato" class="sectionContato">
     <h1>CONTATO</h1>
+    <form action="https://api.staticforms.xyz/submit" method="post">
+      <div class="inputBox">
+          <div class="inputOnForm">
+              <input id="inputForm" type="text" name="name" placeholder="Nome Completo" autocomplete="off" required>
+              <span class="focus"></span>
+          </div>
+          <div class="inputOnForm">
+              <input id="inputForm" type="text" name="email" placeholder="Seu Email" autocomplete="off" required>
+              <span class="focus"></span>
+          </div>
+      </div>
+
+      <div class="inputBox">
+          <div class="inputOnForm">
+              <input id="inputForm" type="text" name="phone" placeholder="Número de Celular" autocomplete="off" required>
+              <span class="focus"></span>
+          </div>
+          <div class="inputOnForm">
+              <input id="inputForm" type="text" name="subject" placeholder="Assunto" autocomplete="off" required>
+              <span class="focus"></span>
+          </div>
+      </div>
+
+      <div class="textarea-field">
+          <textarea name="message" id="inputMensagem" cols="30" rows="10" placeholder="Sua Mensagem" autocomplete="off" required></textarea>
+          <span class="focus"></span>
+      </div>
+
+      <div class="btn-box btns">
+          <button type="submit" class="btnPrimary"><p>ENVIAR</p></button>
+      </div>
+
+      <input type="hidden" name="accessKey" value="8e7c9145-8d86-4259-958c-39227b2962b3">
+      <input type="hidden" name="redirectTo" value="http://localhost:3333/obrigado.html">
+  </form>
   </section>
+
 </body>
 
 </html>
+
+<script src="./js/home.js"></script>

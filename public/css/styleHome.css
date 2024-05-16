@@ -1,6 +1,7 @@
 * {
   scroll-behavior: smooth;
   font-family: JetBrains Mono;
+  /* overflow: hidden; */
 }
 
 body {
@@ -8,26 +9,37 @@ body {
   padding: 0;
 }
 
+body #imgJason {
+  z-index: 2;
+  position: absolute;
+  margin-top: 35%;
+  width: 25%;
+}
+
+body #imgDavid {
+  z-index: 2;
+  position: absolute;
+  margin-top: 15%;
+  width: 25%;
+  margin-left: 77%;
+  transform: scaleX(-1);
+}
+
 nav {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: row;
   background-color: #031019;
   border-bottom: 3px solid #E32D60;
   width: 100%;
+  height: 40px;
   position: fixed;
   top: 0;
+  z-index: 5;
 }
 
-nav ul {
-  display: flex;
-  list-style: none;
-  justify-content: space-between;
-  width: 50%;
-}
-
-nav ul a {
+nav a {
   font-style: none;
   font-weight: 900;
   color: white;
@@ -35,7 +47,7 @@ nav ul a {
   transition: 0.5s;
 }
 
-nav ul a:hover{
+nav a:hover, nav a.active{
   font-style: none;
   font-weight: 900;
   color: #E0E330;
@@ -48,12 +60,15 @@ header {
   color: white;
   width: 100%;
   height: 715px;
-  background-image: url('../assets/backgroundHeader.png');
-  background-repeat: no-repeat;
+  /* background-image: url('../assets/backgroundHeader.png');
+  background-repeat: no-repeat; */
+  background-color: #031019;
   background-size: cover;
   justify-content: center;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
   border-bottom: 3px solid #E32D60;
+  z-index: 600;
+  transition: .3s;
 }
 
 #tituloHeader {
@@ -61,6 +76,7 @@ header {
   width: 60%;
   text-align: center;
   justify-content: center;
+  z-index: 1;
 }
 
 header h1 {
@@ -74,10 +90,23 @@ header h1 {
   font-weight: 900;
 }
 
+header video {
+  display: flex;
+  width: 100%;
+  height: 716px;
+  justify-content: center;
+  background-attachment: fixed;
+  position: absolute;
+  z-index: 0;
+  opacity: 40%;
+  background-color: #E0E330;
+  object-fit: cover;
+}
+
 .sectionSobre {
   display: flex;
   width: 100%;
-  height: 500px;
+  height: 300px;
   background-color: #031019;
   justify-content: center;
   flex-direction: column;
@@ -86,7 +115,7 @@ header h1 {
 .sectionSobre h1 {
   display: flex;
   color: #E0E330;
-  font-size: 64px;
+  font-size: 40px;
   justify-content: center;
   font-weight: 900;
   margin-top: -15px;
@@ -94,7 +123,7 @@ header h1 {
 
 .sectionSobre p {
   color: white;
-  font-size: 32px;
+  font-size: 25px;
   text-align: center;
   margin-top: -20px;
 }
@@ -104,7 +133,7 @@ header h1 {
   background-image: url('../assets/backgroundBenef.png');
   background-size: cover;
   width: 100%;
-  height: 850px;
+  height: 650px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -120,8 +149,8 @@ header h1 {
 
 .cardBenef {
   display: flex;
-  width: 500px;
-  height: 600px;
+  width: 350px;
+  height: 450px;
   background-color: #031019;
   border: 3px solid #E32D60;
   border-radius: 3px;
@@ -129,24 +158,42 @@ header h1 {
   flex-direction: column;
   align-items: center;
   color: white;
+  transform: 0.5s;
+  transition: 0.3s;
+}
+
+.cardBenef:hover {
+  display: flex;
+  width: 370px;
+  height: 470px;
+  background-color: #031019;
+  border: 3px solid #E0E330;
+  border-radius: 3px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  transform: 0.5s;
+  transition: 0.3s;
 }
 
 .sectionBenef h1 {
   display: flex;
   color: #E0E330;
-  font-size: 64px;
+  font-size: 40px;
   justify-content: center;
   font-weight: 900;
+  margin-top: -60px;
 }
 
 .cardBenef h2 {
-  font-size: 50px;
+  font-size: 30px;
   margin-top: 0px;
   font-weight: 900;
 }
 
 .cardBenef ul {
-  font-size: 25px;
+  font-size: 18px;
   text-align: center;
   list-style: none;
   margin-left: -30px;
@@ -158,12 +205,13 @@ header h1 {
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  border-bottom: 3px solid #E32D60;
 }
 
 .sectionMod h1 {
   display: flex;
   color: #E0E330;
-  font-size: 64px;
+  font-size: 40px;
   justify-content: center;
   font-weight: 900;
 }
@@ -173,9 +221,212 @@ header h1 {
   justify-content: center;
   align-items: center;
   width: 95%;
-  height: 300px;
-  background-color: #E0E330;
+  height: 150px;
   border: #E32D60 solid;
   margin-top: 20px;
   margin-bottom: 20px;
+  transition: 0.5s;
+  color: #E0E330;
+  cursor: pointer;
+}
+
+.cardMod:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  height: 200px;
+  border: #E0E330 solid;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: 0.5s;
+  color: #E32D60;
+}
+
+#cardClassic {
+  background-image: url('../assets/Canon-Pro-Storror-1-1110.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  transition: 0.1s linear;
+  font-size: 100px;
+  font-weight: 900;
+}
+
+#cardClassic:hover {
+  background-image: url('../assets/jump-long-jump.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  transition: 0.1s linear;
+}
+
+#cardFreeRunning {
+  background-image: url('../assets/parkour-freerunning-athlete-jason-paul-mumbai.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  transition: 0.1s;
+  font-size: 100px;
+  font-weight: 900;
+}
+
+#cardFreeRunning:hover {
+  background-image: url('../assets/ae8141b3bfdf5cd70ff1da6af1e79a58.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 100%;
+  transition: 0.1s linear;
+}
+
+#cardClimbing {
+  background-image: url('../assets/maxresdefault.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0%;
+  font-size: 100px;
+  font-weight: 900;
+  transition: 0.1s linear;
+}
+
+#cardClimbing:hover {
+  background-image: url('../assets/0a4f7ff61eb1076ac4dc30ef1e0fd751.gif');
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: 0.1s linear;
+  /* background-position: 0%; */
+}
+
+.btnPrimary {
+  display: flex;
+  margin-top: 10%;
+  background: none;
+  color: white;
+  font-weight: bolder;
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: 1s linear;
+  cursor: pointer;
+  border-style: solid;
+  border-color: #E0E330;
+  position: relative;
+}
+
+.btnPrimary:hover {
+  display: flex;
+  margin-top: 10%;
+  border-style: solid;
+  border-color: #E0E330;
+  color: black;
+  font-weight: bolder;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: 1s;
+}
+
+.btnPrimary::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #E0E330;
+  z-index: 0;
+  transition:  transform 0.5s;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+  transform: scaleY(0);
+}
+
+.btnPrimary:hover::before {
+  transform: scaleY(1);
+}
+
+.btnPrimary p {
+  z-index: 1;
+  font-weight: bolder;
+}
+
+.sectionContato {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: auto;
+  padding-bottom: 7rem;
+  background-image: url('../assets/backgroundContato.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.sectionContato form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sectionContato .inputBox {
+  display: flex;
+  width: 300px;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.sectionContato h1 {
+  display: flex;
+  color: #E0E330;
+  font-size: 64px;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.sectionContato #inputForm {
+  width: 300px;
+  border-color: white;
+  border-width: 3.5px;
+  background-color: transparent;
+  background: none;
+  border-style: solid;
+  width: 430px;
+  height: 40px;
+  font-size: 20px;
+  border-radius: 3px;
+  margin: 5px;
+  color: white;
+}
+
+#inputMensagem {
+  width: 880px;
+  border-color: white;
+  background-color: transparent;
+  background: none;
+  border-width: 3.5px;
+  border-style: solid;
+  border-radius: 3px;
+  margin-top: 10px;
+  color: white;
+}
+
+::placeholder {
+  color: white;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: #E32D60;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #E0E330;
+  width: 20px;
+
 }
