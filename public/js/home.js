@@ -1,3 +1,5 @@
+grafico.style.display = 'none';
+
 function redirectClassic() {
   // window.location.href = "https://www.youtube.com/watch?v=xbqVWZD-sfI&t=57s";
   window.open("https://www.youtube.com/watch?v=xbqVWZD-sfI&t=57s", "_blank");
@@ -25,19 +27,10 @@ window.onscroll = () => {
     let height = sec.offsetHeight;
     let id = sec.getAttribute('id');
 
-    console.log("Top:", top);
-    console.log("Offset:", offset);
-    console.log("Height:", height);
-    console.log("ID:", id);
-
     if(top >= offset && top < offset + height) {
-      console.log("Section in view:", id);
-
       navLinks.forEach(links => {
         links.classList.remove('active');
-        console.log("Link:", links.getAttribute('href'));
         if (links.getAttribute('href').includes(id)) {
-          console.log("Adding active class to link:", links.getAttribute('href'));
           links.classList.add('active');
         }
       });
@@ -45,8 +38,53 @@ window.onscroll = () => {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function() {
-  var audio = document.getElementById("meuAudio");
-  audio.volume = 0.02;
-  audio.play();
-});
+function apagarCard() {
+  cardDashClassic.style.display = 'none';
+  cardDashFreeRunning.style.display = 'none';
+  cardDashClimbing.style.display = 'none';
+  grafico.style.display = 'flex';
+}
+
+function votarClassic() {
+  classic.innerHTML = '●';
+  setTimeout(() => apagarCard(), 1500);
+}
+
+function votarFreeRunning() {
+  freeRunning.innerHTML = '●';
+  setTimeout(() => apagarCard(), 1500);
+}
+
+function votarClimbing() {
+  climbing.innerHTML = '●';
+  setTimeout(() => apagarCard(), 1500);
+}
+
+
+const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow'],
+      datasets: [{
+        label: 'VOTOS DE CADA MODALIDADE',
+        data: [12, 19, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   var audio = document.getElementById("meuAudio");
+//   audio.volume = 0.02;
+//   audio.play();
+// });

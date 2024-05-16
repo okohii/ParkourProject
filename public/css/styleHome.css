@@ -110,6 +110,7 @@ header video {
   background-color: #031019;
   justify-content: center;
   flex-direction: column;
+  border-bottom: #E32D60 solid 3px;
 }
 
 .sectionSobre h1 {
@@ -128,7 +129,7 @@ header video {
   margin-top: -20px;
 }
 
-#benef {
+.sectionBenef {
   display: flex;
   background-image: url('../assets/backgroundBenef.png');
   background-size: cover;
@@ -138,6 +139,7 @@ header video {
   align-items: center;
   flex-direction: column;
   background-attachment: fixed;
+  border-bottom: #E32D60 solid 3px;
 }
 
 #contentBenef {
@@ -352,6 +354,84 @@ header video {
   font-weight: bolder;
 }
 
+#contentDash {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 100px;
+}
+
+.sectionDashboard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #031019;
+  border-bottom: #E32D60 solid 3px;
+}
+
+.sectionDashboard h1 {
+    display: flex;
+    color: #E0E330;
+    font-size: 40px;
+    justify-content: center;
+    font-weight: 900;
+  }
+
+.cardModDash {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 400px;
+  border: #E32D60 solid;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: 0.5s;
+  color: #E0E330;
+  cursor: pointer;
+  background-color: #E0E330;
+}
+
+.cardModDash h2 {
+  font-weight: 900;
+  font-size: 50px;
+  text-align: center;
+}
+
+.cardModDash:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 420px;
+  border: #E0E330 solid;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  transition: 0.5s;
+  color: #E32D60;
+  background-color: #E32D60;
+}
+
+#cardDashClassic {
+  background-image: url('../assets/cardDashClassic.jpg');
+  background-size: cover;
+}
+
+#cardDashFreeRunning {
+  background-image: url('../assets/cardDashFreeRunning.jpg');
+  background-size: cover;
+}
+
+#cardDashClimbing {
+  background-image: url('../assets/cardDashClimbing.jpg');
+  background-size: cover;
+}
+
+/* #grafico {
+  display: none;
+} */
+
 .sectionContato {
   display: flex;
   justify-content: center;
@@ -359,9 +439,10 @@ header video {
   flex-direction: column;
   min-height: auto;
   padding-bottom: 7rem;
-  background-image: url('../assets/backgroundContato.png');
+  background-image: url('../assets/backgroundLoginCadastro.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  border-bottom: #E32D60 solid 3px;
 }
 
 .sectionContato form {
@@ -382,7 +463,7 @@ header video {
 .sectionContato h1 {
   display: flex;
   color: #E0E330;
-  font-size: 64px;
+  font-size: 40px;
   justify-content: center;
   font-weight: 900;
 }
@@ -418,6 +499,7 @@ header video {
   color: white;
   font-weight: 800;
   font-size: 15px;
+  padding-left: 5px;
 }
 
 ::-webkit-scrollbar {

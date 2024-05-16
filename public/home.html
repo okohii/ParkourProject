@@ -5,24 +5,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/styleHome.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <title>HOME</title>
-  <audio id="meuAudio" autoplay loop>
+  <!-- <audio id="meuAudio" autoplay loop>
     <source src="./assets/somAmbiente.mp3" type="audio/mp3">
-  </audio>
+  </audio> -->
 </head>
 
 <body>
-  
+
   <!-- HEADER -->
   <header id="header">
     <!-- NAVBAR -->
     <nav class="nav">
-        <a id="navHome" href="#header" class="active">HOME.</a>
-        <a id="navSobre" href="#sobre">SOBRE.</a>
-        <a id="navBenef" href="#benef">BENEF.</a>
-        <a id="navModalidade" href="#modalidade">MODALIDADE.</a>
-        <a id="navDashboard" href="#dashboard">DASHBOARD.</a>
-        <a id="navContato" href="#contato">CONTATO.</a>
+      <a id="navHome" href="#header" class="active">HOME.</a>
+      <a id="navSobre" href="#sobre">SOBRE.</a>
+      <a id="navBenef" href="#benef">BENEF.</a>
+      <a id="navModalidade" href="#modalidade">MODALIDADE.</a>
+      <a id="navDashboard" href="#dashboard">DASHBOARD.</a>
+      <a id="navContato" href="#contato">CONTATO.</a>
     </nav>
     <div id="tituloHeader">
       <h1>SEJA LEVE EM CORPO E MENTE.</h1>
@@ -58,7 +59,7 @@
       </div>
       <div id="cardPsicologico" class="cardBenef">
         <h2>PSICOLÓGICOS</h2>
-          <ul>
+        <ul>
           <li>DESENVOLVIMENTO DA CORAGEM.</li>
           <br>
           <li>MENOR ANSIEDADE E MAIS CALMA.</li>
@@ -84,46 +85,65 @@
 
   <section id="dashboard" class="sectionDashboard">
     <h1>QUAL SUA MODALIDADE?</h1>
+    <div id="contentDash">
+      <div class="cardModDash" id="cardDashClassic" onclick="votarClassic()">
+        <h2 id="classic">CLASSIC</h2>
+      </div>
+      <div class="cardModDash" id="cardDashFreeRunning" onclick="votarFreeRunning()">
+        <h2 id="freeRunning">FREE RUNNING</h2>
+      </div>
+      <div class="cardModDash" id="cardDashClimbing" onclick="votarClimbing()">
+        <h2 id="climbing">CLIMBING</h2>
+      </div>
 
+        <div id="grafico">
+          <div>
+            <canvas id="myChart"></canvas>
+          </div>
+        </div>
+    </div>
   </section>
 
   <section id="contato" class="sectionContato">
     <h1>CONTATO</h1>
     <form action="https://api.staticforms.xyz/submit" method="post">
       <div class="inputBox">
-          <div class="inputOnForm">
-              <input id="inputForm" type="text" name="name" placeholder="Nome Completo" autocomplete="off" required>
-              <span class="focus"></span>
-          </div>
-          <div class="inputOnForm">
-              <input id="inputForm" type="text" name="email" placeholder="Seu Email" autocomplete="off" required>
-              <span class="focus"></span>
-          </div>
+        <div class="inputOnForm">
+          <input id="inputForm" type="text" name="name" placeholder="Nome Completo" autocomplete="off" required>
+          <span class="focus"></span>
+        </div>
+        <div class="inputOnForm">
+          <input id="inputForm" type="text" name="email" placeholder="Seu Email" autocomplete="off" required>
+          <span class="focus"></span>
+        </div>
       </div>
 
       <div class="inputBox">
-          <div class="inputOnForm">
-              <input id="inputForm" type="text" name="phone" placeholder="Número de Celular" autocomplete="off" required>
-              <span class="focus"></span>
-          </div>
-          <div class="inputOnForm">
-              <input id="inputForm" type="text" name="subject" placeholder="Assunto" autocomplete="off" required>
-              <span class="focus"></span>
-          </div>
+        <div class="inputOnForm">
+          <input id="inputForm" type="text" name="phone" placeholder="Número de Celular" autocomplete="off" required>
+          <span class="focus"></span>
+        </div>
+        <div class="inputOnForm">
+          <input id="inputForm" type="text" name="subject" placeholder="Assunto" autocomplete="off" required>
+          <span class="focus"></span>
+        </div>
       </div>
 
       <div class="textarea-field">
-          <textarea name="message" id="inputMensagem" cols="30" rows="10" placeholder="Sua Mensagem" autocomplete="off" required></textarea>
-          <span class="focus"></span>
+        <textarea name="message" id="inputMensagem" cols="30" rows="10" placeholder="Sua Mensagem" autocomplete="off"
+          required></textarea>
+        <span class="focus"></span>
       </div>
 
       <div class="btn-box btns">
-          <button type="submit" class="btnPrimary"><p>ENVIAR</p></button>
+        <button type="submit" class="btnPrimary">
+          <p>ENVIAR</p>
+        </button>
       </div>
 
       <input type="hidden" name="accessKey" value="8e7c9145-8d86-4259-958c-39227b2962b3">
       <input type="hidden" name="redirectTo" value="http://localhost:3333/obrigado.html">
-  </form>
+    </form>
   </section>
 
 </body>
