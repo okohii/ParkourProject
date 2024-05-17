@@ -185,7 +185,8 @@ header video {
   font-size: 40px;
   justify-content: center;
   font-weight: 900;
-  margin-top: -60px;
+  margin-top: -550px;
+  position: absolute;
 }
 
 .cardBenef h2 {
@@ -428,9 +429,14 @@ header video {
   background-size: cover;
 }
 
-/* #grafico {
+#grafico {
   display: none;
-} */
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vh;
+  height: 70vh;
+}
 
 .sectionContato {
   display: flex;
@@ -439,6 +445,7 @@ header video {
   flex-direction: column;
   min-height: auto;
   padding-bottom: 7rem;
+  height: 550px;
   background-image: url('../assets/backgroundLoginCadastro.jpg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -450,6 +457,7 @@ header video {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  margin-top: 100px;
 }
 
 .sectionContato .inputBox {
@@ -510,5 +518,78 @@ header video {
 ::-webkit-scrollbar-thumb {
   background-color: #E0E330;
   width: 20px;
+}
 
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #031019;
+  padding-left: 15px;
+  padding-right: 15px;
+  color: #E32D60;
+  text-shadow: 0 0 2px rgb(136, 47, 88),
+             0 0 4px #E32D60,
+             0 0 6px #E32D60,
+             0 0 8px #E32D60,
+             0 0 14px #E32D60,
+             0 0 16px #E32D60,
+             0 0 20px #E32D60,
+             0 0 30px #E32D60;
+}
+
+.footer-text p {
+  font-size: 15px;
+}
+
+.footer-iconTop a {
+  margin: 3px;
+  width: 10px;
+  height: 10px;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: .8rem;
+  background: #E32D60;
+  border: .2rem solid #E0E330;
+  border-radius: .6rem;
+  z-index: 1;
+  overflow: hidden;
+  text-shadow: 0 0 2px #E32D60,
+             0 0 4px #E32D60,
+             0 0 6px #E32D60,
+             0 0 8px #E32D60,
+             0 0 14px #E32D60,
+             0 0 16px #E32D60,
+             0 0 20px #E32D60,
+             0 0 30px #E32D60;
+}
+
+.footer-iconTop a i {
+  font-size: 2.4rem;
+  color: #E0E330;
+  transition: .5s;
+  padding-top: 5px;
+}
+
+.footer-iconTop a:hover i {
+  color: #E32D60;
+}
+
+.footer-iconTop a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background: #E0E330;
+  z-index: -1;
+  transition: .5s;
+}
+
+.footer-iconTop a:hover::before {
+  width: 100%;
 }

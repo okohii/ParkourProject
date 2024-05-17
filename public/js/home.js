@@ -1,5 +1,3 @@
-grafico.style.display = 'none';
-
 function redirectClassic() {
   // window.location.href = "https://www.youtube.com/watch?v=xbqVWZD-sfI&t=57s";
   window.open("https://www.youtube.com/watch?v=xbqVWZD-sfI&t=57s", "_blank");
@@ -45,6 +43,16 @@ function apagarCard() {
   grafico.style.display = 'flex';
 }
 
+function mostrarCard() {
+  cardDashClassic.style.display = 'flex';
+  cardDashFreeRunning.style.display = 'flex';
+  cardDashClimbing.style.display = 'flex';
+  classic.innerHTML = 'CLASSIC';
+  freeRunning.innerHTML = 'FREE RUNNING';
+  climbing.innerHTML = 'CLIMBING';
+  grafico.style.display = 'none';
+}
+
 function votarClassic() {
   classic.innerHTML = '●';
   setTimeout(() => apagarCard(), 1500);
@@ -66,17 +74,48 @@ const ctx = document.getElementById('myChart');
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow'],
+      labels: ['MODALIDADE'],
       datasets: [{
-        label: 'VOTOS DE CADA MODALIDADE',
-        data: [12, 19, 3],
-        borderWidth: 1
+        label: 'CLASSIC',
+        data: [12],
+        borderWidth: 1,
+        backgroundColor: [
+          '#E32D60', // Cor da primeira barra (CLASSIC)
+        ],
+        borderColor: [
+          '#E32D60',   // Cor da borda da primeira barra (CLASSIC)
+        ],
+      },
+      {
+        label: 'FREE RUNNING',
+        data: [19],
+        borderWidth: 1,
+        backgroundColor: [
+          '#E0E330',  // Cor da segunda barra (FREE RUNNING)
+        ],
+        borderColor: [
+          '#E0E330',   // Cor da borda da segunda barra (FREE RUNNING)
+        ],
+      },
+      {
+        label: 'CLIMBING',
+        data: [3],
+        borderWidth: 1,
+        backgroundColor: [
+          '#CA440f'   // Cor da terceira barra (CLIMBING)
+        ],
+        borderColor: [
+          '#CA440F'    // Cor da borda da terceira barra (CLIMBING)
+        ],
       }]
     },
     options: {
       scales: {
         y: {
           beginAtZero: true
+        },
+        x: {
+          fontSize: 10
         }
       }
     }

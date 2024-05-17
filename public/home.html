@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/styleHome.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="shortcut icon" href="./assets/davidbelle.png" type="image/x-icon">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <title>HOME</title>
   <!-- <audio id="meuAudio" autoplay loop>
     <source src="./assets/somAmbiente.mp3" type="audio/mp3">
@@ -28,7 +30,7 @@
     <div id="tituloHeader">
       <h1>SEJA LEVE EM CORPO E MENTE.</h1>
     </div>
-    <video src="./assets/videoParkourHeader.mp4" autoplay loop></video>
+    <video src="./assets/videoParkourHeader.mp4" preload="true" autoplay="true" muted loop></video>
   </header>
   <!-- <img src="./assets/davidbelle.png" id="imgDavid"> -->
   <section id="sobre" class="sectionSobre">
@@ -95,12 +97,12 @@
       <div class="cardModDash" id="cardDashClimbing" onclick="votarClimbing()">
         <h2 id="climbing">CLIMBING</h2>
       </div>
-
-        <div id="grafico">
-          <div>
-            <canvas id="myChart"></canvas>
-          </div>
-        </div>
+      <div id="grafico">
+        <canvas id="myChart"></canvas>
+        <button class="btnPrimary" onclick="mostrarCard()">
+          <p>VOLTAR</p>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -145,6 +147,16 @@
       <input type="hidden" name="redirectTo" value="http://localhost:3333/obrigado.html">
     </form>
   </section>
+
+  <footer class="footer">
+    <div class="footer-text">
+        <p class="copy">&copy; 2023 by Gustavo | All Rights Reserved.</p>
+    </div>
+
+    <div class="footer-iconTop">
+        <a href="#header"><i class='bx bx-up-arrow-alt'></i></a>
+    </div>
+</footer>
 
 </body>
 

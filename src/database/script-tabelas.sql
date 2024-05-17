@@ -1,5 +1,4 @@
 -- Active: 1713288107577@@127.0.0.1@3306@parkour
-
 CREATE DATABASE parkour;
 
 USE parkour;
@@ -17,4 +16,10 @@ CREATE TABLE usuario (
 	fkModalidade int, constraint fkMod FOREIGN KEY (fkModalidade) REFERENCES modalidade(idModalidade)
 );
 
+INSERT INTO modalidade (modalidade) VALUES
+	('Classic'),
+	('Free Running'),
+	('Climbing');
+
 SELECT * from usuario;
+SELECT * from modalidade;

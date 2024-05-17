@@ -1,8 +1,24 @@
+* {
+  font-family: JetBrains Mono;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
 body {
+  display: flex;
   background-image: url('../assets/backgroundLoginCadastro.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   color: white;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .btnPrimary {
@@ -53,4 +69,54 @@ body {
 
 .btnPrimary:hover::before {
   transform: scaleY(1);
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+h1 {
+  cursor: context-menu;
+  font-size: 100px;
+  transition: 2s;
+  color: #E0E330;
+    text-shadow: 0 0 5px #E0E330,
+    0 0 10px #E0E330,
+    0 0 20px #E0E330,
+    0 0 40px #E0E330,
+    0 0 80px #E0E330,
+    0 0 120px #E0E330,
+    0 0 160px #E0E330;
+animation: neon-flicker 0.7s infinite alternate;
+}
+
+@keyframes neon-flicker {
+0% {
+text-shadow: 0 0 5px #E0E330,
+        0 0 10px #E0E330,
+        0 0 20px #E0E330,
+        0 0 40px #E0E330,
+        0 0 80px #E0E330,
+        0 0 120px #E0E330,
+        0 0 160px #E0E330;
+}
+100% {
+text-shadow: 0 0 5px #E0E330,
+        0 0 10px #E0E330,
+        0 0 20px #E0E330,
+        0 0 40px #ffffff,
+        0 0 80px #E0E330,
+        0 0 120px #E0E330,
+        0 0 160px transparent;
+}
+}
+
+p {
+  font-size: 30px;
+  font-weight: 900;
 }
