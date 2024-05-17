@@ -22,7 +22,16 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucaoSql);
 }
 
+function votar(id, voto) {
+    console.log('Acessei Votar');
+
+    var instrucaoSql = `
+        UPDATE usuario SET fkModalidade = ${voto} WHERE idUsuario = ${id};`
+        return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    votar
 };

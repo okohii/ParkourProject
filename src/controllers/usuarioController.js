@@ -70,7 +70,37 @@ function cadastrar(req, res) {
     }
 }
 
+function votar(req, res) {
+    var id = req.body.idServer;
+    var voto = req.body.votoServer;
+
+    if (id == undefined) {
+        res.status(400).send("O id está undefined!");
+    } else if (voto == undefined) {
+        res.status(400).send("O voto está undefined!");
+    } else {
+            usuarioModel.votar(voto, id)
+                .then(
+                    function (resultado) {
+                        res.json(resultado);
+                        console.log('resultado: ', resultado);
+                    }
+                ).catch(
+                    function (erro) {
+                        console.log(erro);
+                        console.log(
+                            "\nHouve um erro ao realizar o voto! Erro: ",
+                            erro.sqlMessage
+                        );
+                        res.status(500).json(erro.sqlMessage);
+                    }
+                );
+    }
+
+}
+
 module.exports = {
     autenticar,
-    cadastrar
+    cadastrar,
+    votar
 }

@@ -26,6 +26,7 @@ app.use(cors());
 
 app.use("/login", indexRouter);
 app.use("/usuarios", usuarioRouter);
+app.use("/home", usuarioRouter);
 
 app.listen(PORTA_APP, function () {
     console.log(`

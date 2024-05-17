@@ -53,19 +53,115 @@ function mostrarCard() {
   grafico.style.display = 'none';
 }
 
+
+var voto = 0;
+var id = sessionStorage.idUsuario;
+
 function votarClassic() {
-  classic.innerHTML = '●';
-  setTimeout(() => apagarCard(), 1500);
+  voto = 1;
+  sessionStorage.voto = voto;
+  console.log('voto', voto);
+  console.log('id', id);
+
+fetch("/usuarios/votar", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    idServer: id,
+    votoServer: voto
+  })
+})
+.then(function (resposta) {
+  console.log('passou', resposta)
+  if (resposta.ok) {
+    console.log(resposta);
+    resposta.json().then(json => {
+      console.log("NA PROXIMA DA CONSOLE.LOG", json)
+      console.log(sessionStorage)
+    });
+    alert('SUCESSO');
+    classic.innerHTML = '●';
+    setTimeout(() => apagarCard(), 1500);
+  } else {
+    alert("Houve um erro ao votar!");
+  }
+})
+.catch(function (erro) {
+  console.error('Erro na solicitação:', erro);
+});
 }
 
 function votarFreeRunning() {
+  voto = 2;
+  sessionStorage.voto = voto;
+  
   freeRunning.innerHTML = '●';
-  setTimeout(() => apagarCard(), 1500);
+  fetch("/usuarios/votar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      idServer: id,
+      votoServer: voto
+    })
+  })
+  .then(function (resposta) {
+    console.log('passou', resposta)
+    if (resposta.ok) {
+      console.log(resposta);
+      resposta.json().then(json => {
+        console.log(sessionStorage)
+      });
+      alert('SUCESSO');
+      classic.innerHTML = '●';
+      setTimeout(() => apagarCard(), 1500);
+    } else {
+      alert("Houve um erro ao votar!");
+    }
+  })
+  .catch(function (erro) {
+    console.error('Erro na solicitação:', erro);
+  });
 }
 
 function votarClimbing() {
+  voto = 3;
+  sessionStorage.voto = voto;
+  console.log('voto', voto);
+  console.log('id', id);  
+
   climbing.innerHTML = '●';
-  setTimeout(() => apagarCard(), 1500);
+  fetch("/usuarios/votar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      idServer: id,
+      votoServer: voto
+    })
+  })
+  .then(function (resposta) {
+    console.log('passou', resposta)
+    if (resposta.ok) {
+      console.log(resposta);
+      resposta.json().then(json => {
+        console.log(json);
+        console.log(JSON.stringify(json));
+      });
+      alert('SUCESSO');
+      classic.innerHTML = '●';
+      setTimeout(() => apagarCard(), 1500);
+    } else {
+      alert("Houve um erro ao votar!");
+    }
+  })
+  .catch(function (erro) {
+    console.error('Erro na solicitação:', erro);
+  });
 }
 
 
@@ -120,6 +216,7 @@ const ctx = document.getElementById('myChart');
       }
     }
   });
+
 
 
 // document.addEventListener("DOMContentLoaded", function() {
