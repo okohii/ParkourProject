@@ -593,3 +593,19 @@ header video {
 .footer-iconTop a:hover::before {
   width: 100%;
 }
+
+.onu {
+  width: 50%;
+}
+
+.imgFooter{
+  display: flex;
+  width: 30px;
+  height: 30px;
+  margin: 3px;
+  border: #E32D60 solid 2px;
+}
+
+.imgFooter img {
+  width: 100%;
+}
