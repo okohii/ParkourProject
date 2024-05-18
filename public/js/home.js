@@ -118,7 +118,7 @@ let votosClassic;
 let votosFreeRunning;
 let votosClimbing;
 
-let votosLista = [];
+let votosLista = ['Classic', 'FreeRunning', 'Climbing'];
 
 async function selectClassic() {
   return fetch("/usuarios/selectClassic", {
@@ -133,7 +133,7 @@ async function selectClassic() {
       return resposta.json().then(json => {
         console.log('Retorno json voteClassic: ', json);
         votosClassic = parseInt(json[0]['COUNT(fkModalidade)']);;  // Armazena o valor na variável global
-        votosLista.push(votosClassic);
+        votosLista[0] = votosClassic;
         console.log('votosClassic: ', votosClassic);
       });
     } else {
@@ -158,7 +158,7 @@ async function selectFreeRunning() {
       return resposta.json().then(json => {
         console.log('Retorno json votosFreeRunning: ', json);
         votosFreeRunning = parseInt(json[0]['COUNT(fkModalidade)']);  // Armazena o valor na variável global
-        votosLista.push(votosFreeRunning);
+        votosLista[1] = votosFreeRunning;
         console.log('votosFreeRunning: ', votosFreeRunning);
       });
     } else {
@@ -183,7 +183,7 @@ async function selectClimbing() {
       return resposta.json().then(json => {
         console.log('Retorno json voteClimbing: ', json);
         votosClimbing = parseInt(json[0]['COUNT(fkModalidade)']);  // Armazena o valor na variável global
-        votosLista.push(votosClimbing);
+        votosLista[2] = votosClimbing;
         console.log('votosClimbing: ', votosClimbing);
       });
     } else {
@@ -209,9 +209,9 @@ function atualizarGrafico() {
 
     const ctx = document.getElementById('myChart');
 
-    if (Chart.getChart(ctx)) {
-      Chart.getChart(ctx).destroy();
-    }
+    // if (Chart.getChart(ctx)) {
+    //   Chart.getChart(ctx).destroy();
+    // }
     
     new Chart(ctx, {
       type: 'bar',
