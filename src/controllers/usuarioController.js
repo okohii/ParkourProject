@@ -79,28 +79,57 @@ function votar(req, res) {
     } else if (voto == undefined) {
         res.status(400).send("O voto está undefined!");
     } else {
-            usuarioModel.votar(voto, id)
-                .then(
-                    function (resultado) {
-                        res.json(resultado);
-                        console.log('resultado: ', resultado);
-                    }
-                ).catch(
-                    function (erro) {
-                        console.log(erro);
-                        console.log(
-                            "\nHouve um erro ao realizar o voto! Erro: ",
-                            erro.sqlMessage
-                        );
-                        res.status(500).json(erro.sqlMessage);
-                    }
-                );
+        usuarioModel.votar(id, voto)
+            .then(
+                function (resultado) {
+                    res.json(resultado);
+                    console.log('resultado: ', resultado);
+                }
+            ).catch(
+                function (erro) {
+                    console.log(erro);
+                    console.log(
+                        "\nHouve um erro ao realizar o voto! Erro: ",
+                        erro.sqlMessage
+                    );
+                    res.status(500).json(erro.sqlMessage);
+                }
+            );
     }
 
+}
+
+function selectClassic(req, res) {
+    usuarioModel.selectClassic()
+        .then(resultado => res.json(resultado))
+        .catch(erro => {
+            console.error("Houve um erro ao buscar os votos! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+
+function selectFreeRunning(req, res) {
+    usuarioModel.selectFreeRunning()
+        .then(resultado => res.json(resultado))
+        .catch(erro => {
+            console.error("Houve um erro ao buscar os votos! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
+function selectClimbing(req, res) {
+    usuarioModel.selectClimbing()
+        .then(resultado => res.json(resultado))
+        .catch(erro => {
+            console.error("Houve um erro ao buscar os votos! Erro: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        });
 }
 
 module.exports = {
     autenticar,
     cadastrar,
-    votar
+    votar,
+    selectClassic,
+    selectFreeRunning,
+    selectClimbing
 }

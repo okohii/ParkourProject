@@ -6,8 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/styleHome.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="shortcut icon" href="./assets/davidbelle.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./assets/jasonpaul.png" type="image/x-icon">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  
   <title>HOME</title>
   <!-- <audio id="meuAudio" autoplay loop>
     <source src="./assets/somAmbiente.mp3" type="audio/mp3">
@@ -17,21 +19,24 @@
 <body>
 
   <!-- HEADER -->
-  <header id="header">
-    <!-- NAVBAR -->
-    <nav class="nav">
-      <a id="navHome" href="#header" class="active">HOME.</a>
-      <a id="navSobre" href="#sobre">SOBRE.</a>
-      <a id="navBenef" href="#benef">BENEF.</a>
-      <a id="navModalidade" href="#modalidade">MODALIDADE.</a>
-      <a id="navDashboard" href="#dashboard">DASHBOARD.</a>
-      <a id="navContato" href="#contato">CONTATO.</a>
-    </nav>
-    <div id="tituloHeader">
-      <h1>SEJA LEVE EM CORPO E MENTE.</h1>
-    </div>
-    <video src="./assets/videoParkourHeader.mp4" preload="true" autoplay="true" muted loop></video>
-  </header>
+  <section id="header">
+    <header id="header2">
+      <!-- NAVBAR -->
+      <nav class="nav">
+        <a id="navHome" href="#header" class="active">HOME.</a>
+        <a id="navSobre" href="#sobre">SOBRE.</a>
+        <a id="navBenef" href="#benef">BENEF.</a>
+        <a id="navModalidade" href="#modalidade">MODALIDADE.</a>
+        <a id="navDashboard" href="#dashboard">DASHBOARD.</a>
+        <a id="navContato" href="#contato">CONTATO.</a>
+      </nav>
+      <div id="tituloHeader">
+        <h1>SEJA LEVE EM CORPO E MENTE.</h1>
+      </div>
+      <video src="./assets/videoParkourHeader.mp4" preload="true" autoplay="true" muted loop></video>
+    </header>
+  </section>
+  
   <!-- <img src="./assets/davidbelle.png" id="imgDavid"> -->
   <section id="sobre" class="sectionSobre">
     <h1>O QUE É?</h1>
@@ -91,20 +96,20 @@
   <section id="dashboard" class="sectionDashboard">
     <h1>VOTE NA SUA MODALIDADE!</h1>
     <div id="contentDash">
-      <div class="cardModDash" id="cardDashClassic" onclick="votarClassic()">
-        <h2 id="classic">CLASSIC</h2>
-      </div>
-      <div class="cardModDash" id="cardDashFreeRunning" onclick="votarFreeRunning()">
-        <h2 id="freeRunning">FREE RUNNING</h2>
-      </div>
-      <div class="cardModDash" id="cardDashClimbing" onclick="votarClimbing()">
-        <h2 id="climbing">CLIMBING</h2>
-      </div>
+        <div class="cardOnDashboard">
+          <div class="cardModDash" id="cardDashClassic" onclick="votarClassic()">
+            <h2 id="classic">CLASSIC</h2>
+          </div>
+          <div class="cardModDash" id="cardDashFreeRunning" onclick="votarFreeRunning()">
+            <h2 id="freeRunning">FREE RUNNING</h2>
+          </div>
+          <div class="cardModDash" id="cardDashClimbing" onclick="votarClimbing()">
+            <h2 id="climbing">CLIMBING</h2>
+        </div>
+        </div>
       <div id="grafico">
+        <h1>GRÁFICO DE VOTOS</h1>
         <canvas id="myChart"></canvas>
-        <button class="btnPrimary" onclick="mostrarCard()">
-          <p>VOLTAR</p>
-        </button>
       </div>
     </div>
   </section>

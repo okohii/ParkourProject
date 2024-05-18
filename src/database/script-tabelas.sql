@@ -1,4 +1,4 @@
--- Active: 1713288107577@@127.0.0.1@3306@parkour
+
 CREATE DATABASE parkour;
 
 USE parkour;
@@ -23,3 +23,7 @@ INSERT INTO modalidade (modalidade) VALUES
 
 SELECT * from usuario;
 SELECT * from modalidade;
+
+SELECT COUNT(*) FROM usuario WHERE fkModalidade = 1;
+SELECT COUNT(*) FROM usuario WHERE fkModalidade = 2;
+SELECT COUNT(*) FROM usuario WHERE fkModalidade = 3;

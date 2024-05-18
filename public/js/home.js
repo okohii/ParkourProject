@@ -1,3 +1,8 @@
+ScrollReveal().reveal('section', { delay: 300 });
+ScrollReveal().reveal('h1', { delay: 1000 });
+ScrollReveal().reveal('h2', { delay: 700 });
+ScrollReveal().reveal('div', { delay: 500 });
+
 function redirectClassic() {
   // window.location.href = "https://www.youtube.com/watch?v=xbqVWZD-sfI&t=57s";
   window.open("https://www.youtube.com/watch?v=xbqVWZD-sfI&t=57s", "_blank");
@@ -36,22 +41,22 @@ window.onscroll = () => {
   });
 }
 
-function apagarCard() {
-  cardDashClassic.style.display = 'none';
-  cardDashFreeRunning.style.display = 'none';
-  cardDashClimbing.style.display = 'none';
-  grafico.style.display = 'flex';
-}
+// function apagarCard() {
+//   cardDashClassic.style.display = 'none';
+//   cardDashFreeRunning.style.display = 'none';
+//   cardDashClimbing.style.display = 'none';
+//   grafico.style.display = 'flex';
+// }
 
-function mostrarCard() {
-  cardDashClassic.style.display = 'flex';
-  cardDashFreeRunning.style.display = 'flex';
-  cardDashClimbing.style.display = 'flex';
-  classic.innerHTML = 'CLASSIC';
-  freeRunning.innerHTML = 'FREE RUNNING';
-  climbing.innerHTML = 'CLIMBING';
-  grafico.style.display = 'none';
-}
+// function mostrarCard() {
+//   cardDashClassic.style.display = 'flex';
+//   cardDashFreeRunning.style.display = 'flex';
+//   cardDashClimbing.style.display = 'flex';
+//   classic.innerHTML = 'CLASSIC';
+//   freeRunning.innerHTML = 'FREE RUNNING';
+//   climbing.innerHTML = 'CLIMBING';
+//   grafico.style.display = 'none';
+// }
 
 
 var voto = 0;
@@ -60,80 +65,22 @@ var id = sessionStorage.idUsuario;
 function votarClassic() {
   voto = 1;
   sessionStorage.voto = voto;
-  console.log('voto', voto);
-  console.log('id', id);
-
-fetch("/usuarios/votar", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-    idServer: id,
-    votoServer: voto
-  })
-})
-.then(function (resposta) {
-  console.log('passou', resposta)
-  if (resposta.ok) {
-    console.log(resposta);
-    resposta.json().then(json => {
-      console.log("NA PROXIMA DA CONSOLE.LOG", json)
-      console.log(sessionStorage)
-    });
-    alert('SUCESSO');
-    classic.innerHTML = '●';
-    setTimeout(() => apagarCard(), 1500);
-  } else {
-    alert("Houve um erro ao votar!");
-  }
-})
-.catch(function (erro) {
-  console.error('Erro na solicitação:', erro);
-});
+  enviarVoto();
 }
 
 function votarFreeRunning() {
   voto = 2;
   sessionStorage.voto = voto;
-  
-  freeRunning.innerHTML = '●';
-  fetch("/usuarios/votar", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      idServer: id,
-      votoServer: voto
-    })
-  })
-  .then(function (resposta) {
-    console.log('passou', resposta)
-    if (resposta.ok) {
-      console.log(resposta);
-      resposta.json().then(json => {
-        console.log(sessionStorage)
-      });
-      alert('SUCESSO');
-      classic.innerHTML = '●';
-      setTimeout(() => apagarCard(), 1500);
-    } else {
-      alert("Houve um erro ao votar!");
-    }
-  })
-  .catch(function (erro) {
-    console.error('Erro na solicitação:', erro);
-  });
+  enviarVoto();
 }
 
 function votarClimbing() {
   voto = 3;
   sessionStorage.voto = voto;
-  console.log('voto', voto);
-  console.log('id', id);  
+  enviarVoto();
+}
 
-  climbing.innerHTML = '●';
+function enviarVoto() {
   fetch("/usuarios/votar", {
     method: "POST",
     headers: {
@@ -144,19 +91,53 @@ function votarClimbing() {
       votoServer: voto
     })
   })
+    .then(function (resposta) {
+      if (resposta.ok) {
+        resposta.json().then(json => {
+          console.log(json);
+        });
+        selectClassic();
+        selectFreeRunning();
+        selectClimbing();
+        // if (voto === 1) document.getElementById('classic').innerHTML = '●';
+        // if (voto === 2) document.getElementById('freeRunning').innerHTML = '●';
+        // if (voto === 3) document.getElementById('climbing').innerHTML = '●';
+        atualizarGrafico();
+        location.reload()
+        // setTimeout(() => apagarCard(), 1500);
+      } else {
+        alert("Houve um erro ao votar!");
+      }
+    })
+    .catch(function (erro) {
+      console.error('Erro na solicitação:', erro);
+    });
+}
+
+let votosClassic;
+let votosFreeRunning;
+let votosClimbing;
+
+let votosLista = [];
+
+async function selectClassic() {
+  return fetch("/usuarios/selectClassic", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
   .then(function (resposta) {
-    console.log('passou', resposta)
+    console.log('passouClassic', resposta)
     if (resposta.ok) {
-      console.log(resposta);
-      resposta.json().then(json => {
-        console.log(json);
-        console.log(JSON.stringify(json));
+      return resposta.json().then(json => {
+        console.log('Retorno json voteClassic: ', json);
+        votosClassic = parseInt(json[0]['COUNT(fkModalidade)']);;  // Armazena o valor na variável global
+        votosLista.push(votosClassic);
+        console.log('votosClassic: ', votosClassic);
       });
-      alert('SUCESSO');
-      classic.innerHTML = '●';
-      setTimeout(() => apagarCard(), 1500);
     } else {
-      alert("Houve um erro ao votar!");
+      alert("Houve um erro ao buscar os votos!");
     }
   })
   .catch(function (erro) {
@@ -164,58 +145,125 @@ function votarClimbing() {
   });
 }
 
+async function selectFreeRunning() {
+  return fetch("/usuarios/selectFreeRunning", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(function (resposta) {
+    console.log('passouFreeRunning', resposta)
+    if (resposta.ok) {
+      return resposta.json().then(json => {
+        console.log('Retorno json votosFreeRunning: ', json);
+        votosFreeRunning = parseInt(json[0]['COUNT(fkModalidade)']);  // Armazena o valor na variável global
+        votosLista.push(votosFreeRunning);
+        console.log('votosFreeRunning: ', votosFreeRunning);
+      });
+    } else {
+      alert("Houve um erro ao buscar os votos!");
+    }
+  })
+  .catch(function (erro) {
+    console.error('Erro na solicitação:', erro);
+  });
+}
 
-const ctx = document.getElementById('myChart');
+async function selectClimbing() {
+  return fetch("/usuarios/selectClimbing", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  .then(function (resposta) {
+    console.log('passouClimbing', resposta)
+    if (resposta.ok) {
+      return resposta.json().then(json => {
+        console.log('Retorno json voteClimbing: ', json);
+        votosClimbing = parseInt(json[0]['COUNT(fkModalidade)']);  // Armazena o valor na variável global
+        votosLista.push(votosClimbing);
+        console.log('votosClimbing: ', votosClimbing);
+      });
+    } else {
+      alert("Houve um erro ao buscar os votos!");
+    }
+  })
+  .catch(function (erro) {
+    console.error('Erro na solicitação:', erro);
+  });
+}
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['MODALIDADE'],
-      datasets: [{
-        label: 'CLASSIC',
-        data: [12],
-        borderWidth: 1,
-        backgroundColor: [
-          '#E32D60', // Cor da primeira barra (CLASSIC)
-        ],
-        borderColor: [
-          '#E32D60',   // Cor da borda da primeira barra (CLASSIC)
-        ],
-      },
-      {
-        label: 'FREE RUNNING',
-        data: [19],
-        borderWidth: 1,
-        backgroundColor: [
-          '#E0E330',  // Cor da segunda barra (FREE RUNNING)
-        ],
-        borderColor: [
-          '#E0E330',   // Cor da borda da segunda barra (FREE RUNNING)
-        ],
-      },
-      {
-        label: 'CLIMBING',
-        data: [3],
-        borderWidth: 1,
-        backgroundColor: [
-          '#CA440f'   // Cor da terceira barra (CLIMBING)
-        ],
-        borderColor: [
-          '#CA440F'    // Cor da borda da terceira barra (CLIMBING)
-        ],
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+atualizarGrafico();
+
+function atualizarGrafico() {
+  Promise.all([selectClassic(), selectFreeRunning(), selectClimbing()]).then(() => {
+    let valorClassic = votosLista[0];
+    let valorFreeRunning = votosLista[1];
+    let valorClimbing = votosLista[2];
+
+    console.log(votosLista[0]);
+    console.log(votosLista[1]);
+    console.log(votosLista[2]);
+
+    const ctx = document.getElementById('myChart');
+
+    if (Chart.getChart(ctx)) {
+      Chart.getChart(ctx).destroy();
+    }
+    
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['MODALIDADE'],
+        datasets: [{
+          label: 'CLASSIC',
+          data: [valorClassic],
+          borderWidth: 1,
+          backgroundColor: [
+            '#E32D60', // Cor da primeira barra (CLASSIC)
+          ],
+          borderColor: [
+            '#E32D60',   // Cor da borda da primeira barra (CLASSIC)
+          ],
         },
-        x: {
-          fontSize: 10
+        {
+          label: 'FREE RUNNING',
+          data: [valorFreeRunning],
+          borderWidth: 1,
+          backgroundColor: [
+            '#E0E330',  // Cor da segunda barra (FREE RUNNING)
+          ],
+          borderColor: [
+            '#E0E330',   // Cor da borda da segunda barra (FREE RUNNING)
+          ],
+        },
+        {
+          label: 'CLIMBING',
+          data: [valorClimbing],
+          borderWidth: 1,
+          backgroundColor: [
+            '#CA440f'   // Cor da terceira barra (CLIMBING)
+          ],
+          borderColor: [
+            '#CA440F'    // Cor da borda da terceira barra (CLIMBING)
+          ],
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          },
+          x: {
+            fontSize: 10
+          }
         }
       }
-    }
+    });
   });
+}
 
 
 

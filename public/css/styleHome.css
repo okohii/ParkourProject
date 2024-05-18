@@ -7,6 +7,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #031019;
 }
 
 body #imgJason {
@@ -110,7 +111,7 @@ header video {
 .sectionSobre {
   display: flex;
   width: 100%;
-  height: 400px;
+  height: 600px;
   background-color: #031019;
   justify-content: center;
   flex-direction: column;
@@ -123,7 +124,7 @@ header video {
   font-size: 40px;
   justify-content: center;
   font-weight: 900;
-  /* margin-top: -15px; */
+  margin-top: -15px;
 }
 
 .sectionSobre p {
@@ -151,10 +152,11 @@ header video {
 #contentBenef {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-evenly;
   gap: 200px;
-  width: 70%;
+  width: 100%;
   height: 90%;
+  /* background-color: #E0E330; */
 }
 
 .cardBenef {
@@ -366,9 +368,20 @@ header video {
 
 #contentDash {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 100px;
+  width: 100%;
+}
+
+.cardOnDashboard {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  /* border-bottom: #E32D60 solid 3px; */
 }
 
 .sectionDashboard {
@@ -439,12 +452,12 @@ header video {
 }
 
 #grafico {
-  display: none;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100vh;
   height: 70vh;
+  margin-top: -100px;
 }
 
 .sectionContato {
@@ -613,8 +626,8 @@ header video {
 
 .imgOnu{
   display: flex;
-  width: 110px;
-  height: 110px;
+  width: 200px;
+  height: 200px;
   margin: 3px;
   border: #E32D60 solid 2px;
   transform: 0.2;
@@ -623,8 +636,8 @@ header video {
 
 .imgOnu:hover{
   display: flex;
-  width: 120px;
-  height: 120px;
+  width: 150px;
+  height: 150px;
   margin: 3px;
   border: #E0E330 solid 2px;
   transform: 0.2s;

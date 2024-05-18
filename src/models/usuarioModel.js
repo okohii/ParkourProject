@@ -30,8 +30,32 @@ function votar(id, voto) {
         return database.executar(instrucaoSql);
 }
 
+function selectClassic(fkModalidade) {
+    console.log('Acessei selectClassic');
+    var instrucaoSql = `
+        SELECT COUNT(fkModalidade) FROM usuario WHERE fkModalidade = 1;`
+        return database.executar(instrucaoSql);
+}
+
+function selectFreeRunning(fkModalidade) {
+    console.log('Acessei selectFreeRunning');
+    var instrucaoSql = `
+        SELECT COUNT(fkModalidade) FROM usuario WHERE fkModalidade = 2;`
+        return database.executar(instrucaoSql);
+}
+
+function selectClimbing(fkModalidade) {
+    console.log('Acessei selectClimbing');
+    var instrucaoSql = `
+        SELECT COUNT(fkModalidade) FROM usuario WHERE fkModalidade = 3;`
+        return database.executar(instrucaoSql);
+}
+
 module.exports = {
     autenticar,
     cadastrar,
-    votar
+    votar,
+    selectClassic,
+    selectFreeRunning,
+    selectClimbing
 };
