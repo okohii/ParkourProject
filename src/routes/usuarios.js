@@ -27,5 +27,6 @@ router.get("/selectFreeRunning", function (req, res) {
 router.get("/selectClimbing", function (req, res) {
     usuarioController.selectClimbing(req, res);
 });
+  
 
 module.exports = router;

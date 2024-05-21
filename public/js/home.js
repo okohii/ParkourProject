@@ -1,23 +1,68 @@
+var fkParceiro = null;
+var emailParceiro = '';
+
 ScrollReveal().reveal('section', { delay: 300 });
 ScrollReveal().reveal('h1', { delay: 1000 });
 ScrollReveal().reveal('h2', { delay: 700 });
 ScrollReveal().reveal('div', { delay: 500 });
 
+function sair() {
+  sessionStorage.clear();
+  window.location.href = 'http://localhost:3333/login.html';
+}
+
+
+
 function redirectClassic() {
-  // window.location.href = "https://www.youtube.com/watch?v=xbqVWZD-sfI&t=57s";
-  window.open("https://www.youtube.com/watch?v=xbqVWZD-sfI&t=57s", "_blank");
+  var urlsClassic = ['https://www.youtube.com/watch?v=xbqVWZD-sfI&t=57s',
+    'https://www.youtube.com/watch?v=vs-m_7rrVyA',
+    'https://www.youtube.com/watch?v=Tm1dJNC3674',
+    'https://www.youtube.com/watch?v=eMMLi_0jMgc',
+    'https://www.youtube.com/watch?v=U5yHk3hY2MU',
+    'https://www.youtube.com/watch?v=8eVQwHiuYq0'
+  ];
+  
+  for (var i = 0; i < 3; i++) {
+    var num = Math.floor(Math.random() * urlsClassic.length);
+
+    window.open(`${urlsClassic[num]}`, "_blank");
+
+  }
+
 }
 
 function redirectFreeRunning() {
-  // window.location.href = "https://www.youtube.com/watch?v=fqKO5fp4Fcc";
-  window.open("https://www.youtube.com/watch?v=fqKO5fp4Fcc", "_blank");
+  var urlsFreeRunning = ['https://www.youtube.com/watch?v=fqKO5fp4Fcc',
+    'https://www.youtube.com/watch?v=NX7QNWEGcNI&t=32s',
+    'https://www.youtube.com/watch?v=Mv7J2CLBYBk',
+    'https://www.youtube.com/watch?v=hpTEzp-6CkM',
+    'https://www.youtube.com/watch?v=HQKws9cbTJQ',
+    'https://www.youtube.com/watch?v=lPQdPHP32CY'
+  ];
+  
+  for (var i = 0; i < 3; i++) {
+    var num = Math.floor(Math.random() * urlsFreeRunning.length);
+
+    window.open(`${urlsFreeRunning[num]}`, "_blank");
+  }
+
 }
 
 function redirectClimbing() {
-  // window.location.href = "https://www.youtube.com/watch?v=iKFwn-z9WIM&t=310s";
-  window.open("https://www.youtube.com/watch?v=iKFwn-z9WIM&t=310s", "_blank");
-}
+  var urlsClimbing = ['https://www.youtube.com/watch?v=iKFwn-z9WIM&t=310s',
+  'https://www.youtube.com/watch?v=OD4_NFJ9Da8',
+  'https://www.youtube.com/watch?v=iF1g6KnP0-A&t=133s',
+  'https://www.youtube.com/watch?v=UjcAdovYnzI',
+  'https://www.youtube.com/watch?v=jzyFj88In2A',
+  'https://www.youtube.com/watch?v=JNriVJPtTkI'];
+  
+  for (var i = 0; i < 3; i++) {
+    var num = Math.floor(Math.random() * urlsClimbing.length);
+    
+    window.open(`${urlsClimbing[num]}`, "_blank");
+  }
 
+}
 
 let sections = document.querySelectorAll('section');
 let navLinks = document.querySelectorAll('header nav a');
@@ -106,7 +151,7 @@ function enviarVoto() {
         location.reload()
         // setTimeout(() => apagarCard(), 1500);
       } else {
-        alert("Houve um erro ao votar!");
+        alert("VOCÊ JÁ VOTOU!");
       }
     })
     .catch(function (erro) {
@@ -118,9 +163,9 @@ let votosClassic;
 let votosFreeRunning;
 let votosClimbing;
 
-let votosLista = ['Classic', 'FreeRunning', 'Climbing'];
+let votosLista = [votosClassic, votosFreeRunning, votosClimbing];
 
-async function selectClassic() {
+async function selectClassic(fkModalidade) {
   return fetch("/usuarios/selectClassic", {
     method: "GET",
     headers: {
@@ -145,7 +190,7 @@ async function selectClassic() {
   });
 }
 
-async function selectFreeRunning() {
+async function selectFreeRunning(fkModalidade) {
   return fetch("/usuarios/selectFreeRunning", {
     method: "GET",
     headers: {
@@ -170,7 +215,7 @@ async function selectFreeRunning() {
   });
 }
 
-async function selectClimbing() {
+async function selectClimbing(fkModalidade) {
   return fetch("/usuarios/selectClimbing", {
     method: "GET",
     headers: {

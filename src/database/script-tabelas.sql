@@ -9,22 +9,37 @@ CREATE TABLE modalidade (
 	modalidade VARCHAR(45)
 );
 
-CREATE TABLE usuario (
-	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
-	nomeUsuario VARCHAR(45),
-	emailUsuario VARCHAR(45) UNIQUE,
-	senhaUsuario VARCHAR(45),
-	fkModalidade int, constraint fkMod FOREIGN KEY (fkModalidade) REFERENCES modalidade(idModalidade)
-);
-
 INSERT INTO modalidade (modalidade) VALUES
 	('Classic'),
 	('Free Running'),
 	('Climbing');
 
-SELECT * from usuario;
-SELECT * from modalidade;
+CREATE TABLE usuario (
+	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+	nomeUsuario VARCHAR(45),
+	emailUsuario VARCHAR(45) UNIQUE,
+	senhaUsuario VARCHAR(45),
+	fkModalidade INT, CONSTRAINT fkMod FOREIGN KEY (fkModalidade) REFERENCES modalidade(idModalidade),
+	fkParceiro INT, CONSTRAINT fkPar FOREIGN KEY (fkParceiro) REFERENCES usuario(idUsuario)
+);
 
-SELECT COUNT(*) FROM usuario WHERE fkModalidade = 1;
-SELECT COUNT(*) FROM usuario WHERE fkModalidade = 2;
-SELECT COUNT(*) FROM usuario WHERE fkModalidade = 3;
+INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario) VALUES
+	('Gustavo', 'gustavo@gmail.com', '123456789');
+
+CREATE TABLE voto (
+	idVoto INT AUTO_INCREMENT,
+	fkUsuario INT UNIQUE, CONSTRAINT fkUsuarioVoto FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
+	fkModalidade INT, CONSTRAINT fkModalidadeVoto FOREIGN KEY (fkModalidade) REFERENCES modalidade(idModalidade),
+  PRIMARY KEY (idVoto, fkUsuario, fkModalidade)
+);
+
+SELECT * FROM usuario;
+SELECT * FROM modalidade;
+
+SELECT * FROM voto;
+
+
+
+SELECT COUNT(*) FROM voto WHERE fkModalidade = 1;
+SELECT COUNT(*) FROM voto WHERE fkModalidade = 2;
+SELECT COUNT(*) FROM voto WHERE fkModalidade = 3;

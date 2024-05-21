@@ -10,15 +10,16 @@ function autenticar(email, senha) {
 }
 
 // Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
-function cadastrar(nome, email, senha) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, email, senha);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
+function cadastrar(nome, email, senha, fkParceiro) {
+    console.log("Model cadastrar chamado com: ", { nome, email, senha, fkParceiro }); // Adicione logs
+
+    // Ajuste a query SQL conforme a estrutura do banco de dados
     var instrucaoSql = `
-        INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario) VALUES ('${nome}', '${email}', '${senha}');
+        INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario, fkParceiro) VALUES ('${nome}', '${email}', '${senha}', ${fkParceiro ? `'${fkParceiro}'` : 'NULL'});
     `;
-    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+
+    console.log("SQL Query: ", instrucaoSql); // Adicione logs
+
     return database.executar(instrucaoSql);
 }
 
@@ -26,30 +27,31 @@ function votar(id, voto) {
     console.log('Acessei Votar');
 
     var instrucaoSql = `
-        UPDATE usuario SET fkModalidade = ${voto} WHERE idUsuario = ${id};`
+        INSERT INTO voto (fkUsuario, fkModalidade) VALUES (${id}, ${voto});`;
         return database.executar(instrucaoSql);
 }
 
 function selectClassic(fkModalidade) {
     console.log('Acessei selectClassic');
     var instrucaoSql = `
-        SELECT COUNT(fkModalidade) FROM usuario WHERE fkModalidade = 1;`
+        SELECT COUNT(fkModalidade) FROM voto WHERE fkModalidade = 1;`
         return database.executar(instrucaoSql);
 }
 
 function selectFreeRunning(fkModalidade) {
     console.log('Acessei selectFreeRunning');
     var instrucaoSql = `
-        SELECT COUNT(fkModalidade) FROM usuario WHERE fkModalidade = 2;`
+        SELECT COUNT(fkModalidade) FROM voto WHERE fkModalidade = 2;`
         return database.executar(instrucaoSql);
 }
 
 function selectClimbing(fkModalidade) {
     console.log('Acessei selectClimbing');
     var instrucaoSql = `
-        SELECT COUNT(fkModalidade) FROM usuario WHERE fkModalidade = 3;`
+        SELECT COUNT(fkModalidade) FROM voto WHERE fkModalidade = 3;`
         return database.executar(instrucaoSql);
 }
+
 
 module.exports = {
     autenticar,
@@ -57,5 +59,5 @@ module.exports = {
     votar,
     selectClassic,
     selectFreeRunning,
-    selectClimbing
+    selectClimbing,
 };

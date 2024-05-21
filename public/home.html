@@ -9,7 +9,7 @@
   <link rel="shortcut icon" href="./assets/jasonpaul.png" type="image/x-icon">
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <script src="https://unpkg.com/scrollreveal"></script>
-  
+
   <title>HOME</title>
   <!-- <audio id="meuAudio" autoplay loop>
     <source src="./assets/somAmbiente.mp3" type="audio/mp3">
@@ -29,6 +29,7 @@
         <a id="navModalidade" href="#modalidade">MODALIDADE.</a>
         <a id="navDashboard" href="#dashboard">DASHBOARD.</a>
         <a id="navContato" href="#contato">CONTATO.</a>
+        <button class="btnSair" onclick="sair()"><p>SAIR</p></button>
       </nav>
       <div id="tituloHeader">
         <h1>SEJA LEVE EM CORPO E MENTE.</h1>
@@ -36,16 +37,17 @@
       <video src="./assets/videoParkourHeader.mp4" preload="true" autoplay="true" muted loop></video>
     </header>
   </section>
-  
+
   <!-- <img src="./assets/davidbelle.png" id="imgDavid"> -->
   <section id="sobre" class="sectionSobre">
     <h1>O QUE É?</h1>
     <p>Um esporte inovador, que pode ser praticado em qualquer espaço. O Parkour consiste em usar o próprio corpo como
       equipamento e tem como objetivo ultrapassar obstáculos urbanos ou naturais das cidades, como degraus, rampas,
       árvores, muros e outros, fazendo movimentos diversos que unem força e velocidade.</p>
-      <div class="onu">
-        <div class="imgOnu"><a href="https://brasil.un.org/pt-br/sdgs/3" target="_blank"><img src="./assets/saudeOnu.svg"></a></div>
-      </div>
+    <div class="onu">
+      <div class="imgOnu"><a href="https://brasil.un.org/pt-br/sdgs/3" target="_blank"><img
+            src="./assets/saudeOnu.svg"></a></div>
+    </div>
   </section>
   <!-- <img src="./assets/jasonpaul.png" id="imgJason"> -->
   <section id="benef" class="sectionBenef">
@@ -96,17 +98,17 @@
   <section id="dashboard" class="sectionDashboard">
     <h1>VOTE NA SUA MODALIDADE!</h1>
     <div id="contentDash">
-        <div class="cardOnDashboard">
-          <div class="cardModDash" id="cardDashClassic" onclick="votarClassic()">
-            <h2 id="classic">CLASSIC</h2>
-          </div>
-          <div class="cardModDash" id="cardDashFreeRunning" onclick="votarFreeRunning()">
-            <h2 id="freeRunning">FREE RUNNING</h2>
-          </div>
-          <div class="cardModDash" id="cardDashClimbing" onclick="votarClimbing()">
-            <h2 id="climbing">CLIMBING</h2>
+      <div class="cardOnDashboard">
+        <div class="cardModDash" id="cardDashClassic" onclick="votarClassic()">
+          <h2 id="classic">CLASSIC</h2>
         </div>
+        <div class="cardModDash" id="cardDashFreeRunning" onclick="votarFreeRunning()">
+          <h2 id="freeRunning">FREE RUNNING</h2>
         </div>
+        <div class="cardModDash" id="cardDashClimbing" onclick="votarClimbing()">
+          <h2 id="climbing">CLIMBING</h2>
+        </div>
+      </div>
       <div id="grafico">
         <h1>GRÁFICO DE VOTOS</h1>
         <canvas id="myChart"></canvas>
@@ -140,8 +142,8 @@
       </div>
 
       <div class="textarea-field">
-        <textarea style="resize: none;" name="message" id="inputMensagem" cols="30" rows="10" placeholder="Sua Mensagem" autocomplete="off"
-          required></textarea>
+        <textarea style="resize: none;" name="message" id="inputMensagem" cols="30" rows="10" placeholder="Sua Mensagem"
+          autocomplete="off" required></textarea>
         <span class="focus"></span>
       </div>
 
@@ -156,15 +158,16 @@
     </form>
   </section>
 
+
   <footer class="footer">
     <div class="footer-text">
-        <p class="copy">&copy; 2024 by Gustavo | All Rights Reserved.</p>
+      <p class="copy">&copy; 2024 by Gustavo | All Rights Reserved.</p>
     </div>
 
     <div class="footer-iconTop">
-        <a href="#header"><i class='bx bx-up-arrow-alt'></i></a>
+      <a href="#header"><i class='bx bx-up-arrow-alt'></i></a>
     </div>
-</footer>
+  </footer>
 
 </body>
 
