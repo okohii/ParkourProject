@@ -1,3 +1,5 @@
+verificarSessao();
+
 var fkParceiro = null;
 var emailParceiro = '';
 
@@ -6,11 +8,23 @@ ScrollReveal().reveal('h1', { delay: 1000 });
 ScrollReveal().reveal('h2', { delay: 700 });
 ScrollReveal().reveal('div', { delay: 500 });
 
-function sair() {
-  sessionStorage.clear();
-  window.location.href = 'http://localhost:3333/login.html';
+function verificarSessao() {
+  if (sessionStorage.idUsuario == undefined) {
+    divBotao.innerHTML = '<button class="btnSair" onclick="entrar()"><p>LOGIN</p></button>';
+    // window.location.href = 'http://localhost:3333/home.html';
+  } else {
+    divBotao.innerHTML = '<button class="btnSair" onclick="sair()"><p>SAIR</p></button>';
+  }
 }
 
+function sair() {
+  sessionStorage.clear();
+  window.location.reload();
+}
+
+function entrar() {
+  window.location.href = 'http://localhost:3333/login.html';
+}
 
 
 function redirectClassic() {
@@ -21,7 +35,7 @@ function redirectClassic() {
     'https://www.youtube.com/watch?v=U5yHk3hY2MU',
     'https://www.youtube.com/watch?v=8eVQwHiuYq0'
   ];
-  
+
   for (var i = 0; i < 3; i++) {
     var num = Math.floor(Math.random() * urlsClassic.length);
 
@@ -39,7 +53,7 @@ function redirectFreeRunning() {
     'https://www.youtube.com/watch?v=HQKws9cbTJQ',
     'https://www.youtube.com/watch?v=lPQdPHP32CY'
   ];
-  
+
   for (var i = 0; i < 3; i++) {
     var num = Math.floor(Math.random() * urlsFreeRunning.length);
 
@@ -50,15 +64,15 @@ function redirectFreeRunning() {
 
 function redirectClimbing() {
   var urlsClimbing = ['https://www.youtube.com/watch?v=iKFwn-z9WIM&t=310s',
-  'https://www.youtube.com/watch?v=OD4_NFJ9Da8',
-  'https://www.youtube.com/watch?v=iF1g6KnP0-A&t=133s',
-  'https://www.youtube.com/watch?v=UjcAdovYnzI',
-  'https://www.youtube.com/watch?v=jzyFj88In2A',
-  'https://www.youtube.com/watch?v=JNriVJPtTkI'];
-  
+    'https://www.youtube.com/watch?v=OD4_NFJ9Da8',
+    'https://www.youtube.com/watch?v=iF1g6KnP0-A&t=133s',
+    'https://www.youtube.com/watch?v=UjcAdovYnzI',
+    'https://www.youtube.com/watch?v=jzyFj88In2A',
+    'https://www.youtube.com/watch?v=JNriVJPtTkI'];
+
   for (var i = 0; i < 3; i++) {
     var num = Math.floor(Math.random() * urlsClimbing.length);
-    
+
     window.open(`${urlsClimbing[num]}`, "_blank");
   }
 
@@ -75,7 +89,7 @@ window.onscroll = () => {
     let height = sec.offsetHeight;
     let id = sec.getAttribute('id');
 
-    if(top >= offset && top < offset + height) {
+    if (top >= offset && top < offset + height) {
       navLinks.forEach(links => {
         links.classList.remove('active');
         if (links.getAttribute('href').includes(id)) {
@@ -126,37 +140,41 @@ function votarClimbing() {
 }
 
 function enviarVoto() {
-  fetch("/usuarios/votar", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      idServer: id,
-      votoServer: voto
+  if (sessionStorage.idUsuario == undefined) {
+    window.location.href = 'http://localhost:3333/login.html'
+  } else {
+    fetch("/usuarios/votar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        idServer: id,
+        votoServer: voto
+      })
     })
-  })
-    .then(function (resposta) {
-      if (resposta.ok) {
-        resposta.json().then(json => {
-          console.log(json);
-        });
-        selectClassic();
-        selectFreeRunning();
-        selectClimbing();
-        // if (voto === 1) document.getElementById('classic').innerHTML = '●';
-        // if (voto === 2) document.getElementById('freeRunning').innerHTML = '●';
-        // if (voto === 3) document.getElementById('climbing').innerHTML = '●';
-        atualizarGrafico();
-        location.reload()
-        // setTimeout(() => apagarCard(), 1500);
-      } else {
-        alert("VOCÊ JÁ VOTOU!");
-      }
-    })
-    .catch(function (erro) {
-      console.error('Erro na solicitação:', erro);
-    });
+      .then(function (resposta) {
+        if (resposta.ok) {
+          resposta.json().then(json => {
+            console.log(json);
+          });
+          selectClassic();
+          selectFreeRunning();
+          selectClimbing();
+          // if (voto === 1) document.getElementById('classic').innerHTML = '●';
+          // if (voto === 2) document.getElementById('freeRunning').innerHTML = '●';
+          // if (voto === 3) document.getElementById('climbing').innerHTML = '●';
+          atualizarGrafico();
+          location.reload()
+          // setTimeout(() => apagarCard(), 1500);
+        } else {
+          alert("VOCÊ JÁ VOTOU!");
+        }
+      })
+      .catch(function (erro) {
+        console.error('Erro na solicitação:', erro);
+      });
+  }
 }
 
 let votosClassic;
@@ -172,22 +190,22 @@ async function selectClassic(fkModalidade) {
       "Content-Type": "application/json"
     }
   })
-  .then(function (resposta) {
-    console.log('passouClassic', resposta)
-    if (resposta.ok) {
-      return resposta.json().then(json => {
-        console.log('Retorno json voteClassic: ', json);
-        votosClassic = parseInt(json[0]['COUNT(fkModalidade)']);;  // Armazena o valor na variável global
-        votosLista[0] = votosClassic;
-        console.log('votosClassic: ', votosClassic);
-      });
-    } else {
-      alert("Houve um erro ao buscar os votos!");
-    }
-  })
-  .catch(function (erro) {
-    console.error('Erro na solicitação:', erro);
-  });
+    .then(function (resposta) {
+      console.log('passouClassic', resposta)
+      if (resposta.ok) {
+        return resposta.json().then(json => {
+          console.log('Retorno json voteClassic: ', json);
+          votosClassic = parseInt(json[0]['COUNT(fkModalidade)']);;  // Armazena o valor na variável global
+          votosLista[0] = votosClassic;
+          console.log('votosClassic: ', votosClassic);
+        });
+      } else {
+        alert("Houve um erro ao buscar os votos!");
+      }
+    })
+    .catch(function (erro) {
+      console.error('Erro na solicitação:', erro);
+    });
 }
 
 async function selectFreeRunning(fkModalidade) {
@@ -197,22 +215,22 @@ async function selectFreeRunning(fkModalidade) {
       "Content-Type": "application/json"
     }
   })
-  .then(function (resposta) {
-    console.log('passouFreeRunning', resposta)
-    if (resposta.ok) {
-      return resposta.json().then(json => {
-        console.log('Retorno json votosFreeRunning: ', json);
-        votosFreeRunning = parseInt(json[0]['COUNT(fkModalidade)']);  // Armazena o valor na variável global
-        votosLista[1] = votosFreeRunning;
-        console.log('votosFreeRunning: ', votosFreeRunning);
-      });
-    } else {
-      alert("Houve um erro ao buscar os votos!");
-    }
-  })
-  .catch(function (erro) {
-    console.error('Erro na solicitação:', erro);
-  });
+    .then(function (resposta) {
+      console.log('passouFreeRunning', resposta)
+      if (resposta.ok) {
+        return resposta.json().then(json => {
+          console.log('Retorno json votosFreeRunning: ', json);
+          votosFreeRunning = parseInt(json[0]['COUNT(fkModalidade)']);  // Armazena o valor na variável global
+          votosLista[1] = votosFreeRunning;
+          console.log('votosFreeRunning: ', votosFreeRunning);
+        });
+      } else {
+        alert("Houve um erro ao buscar os votos!");
+      }
+    })
+    .catch(function (erro) {
+      console.error('Erro na solicitação:', erro);
+    });
 }
 
 async function selectClimbing(fkModalidade) {
@@ -222,22 +240,22 @@ async function selectClimbing(fkModalidade) {
       "Content-Type": "application/json"
     }
   })
-  .then(function (resposta) {
-    console.log('passouClimbing', resposta)
-    if (resposta.ok) {
-      return resposta.json().then(json => {
-        console.log('Retorno json voteClimbing: ', json);
-        votosClimbing = parseInt(json[0]['COUNT(fkModalidade)']);  // Armazena o valor na variável global
-        votosLista[2] = votosClimbing;
-        console.log('votosClimbing: ', votosClimbing);
-      });
-    } else {
-      alert("Houve um erro ao buscar os votos!");
-    }
-  })
-  .catch(function (erro) {
-    console.error('Erro na solicitação:', erro);
-  });
+    .then(function (resposta) {
+      console.log('passouClimbing', resposta)
+      if (resposta.ok) {
+        return resposta.json().then(json => {
+          console.log('Retorno json voteClimbing: ', json);
+          votosClimbing = parseInt(json[0]['COUNT(fkModalidade)']);  // Armazena o valor na variável global
+          votosLista[2] = votosClimbing;
+          console.log('votosClimbing: ', votosClimbing);
+        });
+      } else {
+        alert("Houve um erro ao buscar os votos!");
+      }
+    })
+    .catch(function (erro) {
+      console.error('Erro na solicitação:', erro);
+    });
 }
 
 atualizarGrafico();
@@ -248,6 +266,26 @@ function atualizarGrafico() {
     let valorFreeRunning = votosLista[1];
     let valorClimbing = votosLista[2];
 
+    let maisVotada = 0;
+
+    kpiClassic.innerHTML = valorClassic;
+    kpiFreeRunning.innerHTML = valorFreeRunning;
+    kpiClimbing.innerHTML = valorClimbing;
+    kpiTotal.innerHTML = valorClassic + valorFreeRunning + valorClimbing;
+
+    if (valorClassic > maisVotada) {
+      maisVotada = valorClassic;
+      modalidadeMaisVotada.innerHTML = `A MODALIDADE MAIS VOTADA FOI: CLASSIC`;
+    }
+    if (valorFreeRunning > maisVotada) {
+      maisVotada = valorFreeRunning;
+      modalidadeMaisVotada.innerHTML = `A MODALIDADE MAIS VOTADA FOI: FREE RUNNING`;
+    }
+    if (valorClimbing > maisVotada) {
+      maisVotada = valorClimbing;
+      modalidadeMaisVotada.innerHTML = `A MODALIDADE MAIS VOTADA FOI: CLIMBING`;
+    }
+
     console.log(votosLista[0]);
     console.log(votosLista[1]);
     console.log(votosLista[2]);
@@ -257,7 +295,7 @@ function atualizarGrafico() {
     // if (Chart.getChart(ctx)) {
     //   Chart.getChart(ctx).destroy();
     // }
-    
+
     new Chart(ctx, {
       type: 'bar',
       data: {

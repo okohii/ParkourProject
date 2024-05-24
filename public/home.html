@@ -25,11 +25,13 @@
       <nav class="nav">
         <a id="navHome" href="#header" class="active">HOME.</a>
         <a id="navSobre" href="#sobre">SOBRE.</a>
-        <a id="navBenef" href="#benef">BENEF.</a>
+        <a id="navBenef" href="#benef">BENEFÍCIOS.</a>
         <a id="navModalidade" href="#modalidade">MODALIDADE.</a>
         <a id="navDashboard" href="#dashboard">DASHBOARD.</a>
         <a id="navContato" href="#contato">CONTATO.</a>
-        <button class="btnSair" onclick="sair()"><p>SAIR</p></button>
+        <div id="divBotao"><button class="btnSair" onclick="entrar()">
+            <p>LOGIN</p>
+          </button></div>
       </nav>
       <div id="tituloHeader">
         <h1>SEJA LEVE EM CORPO E MENTE.</h1>
@@ -90,6 +92,7 @@
 
   <section id="modalidade" class="sectionMod">
     <h1>MODALIDADES</h1>
+    <p>CLIQUE AQUI PARA VER VÍDEOS.</p>
     <div class="cardMod" id="cardClassic" onclick="redirectClassic()">CLASSIC</div>
     <div class="cardMod" id="cardFreeRunning" onclick="redirectFreeRunning()">FREE RUNNING</div>
     <div class="cardMod" id="cardClimbing" onclick="redirectClimbing()" target>CLIMBING</div>
@@ -110,8 +113,29 @@
         </div>
       </div>
       <div id="grafico">
-        <h1>GRÁFICO DE VOTOS</h1>
-        <canvas id="myChart"></canvas>
+        <h1>GRÁFICO DE VOTOS</h1> 
+        <div class="kpisDashboard">
+          <canvas id="myChart"></canvas>
+          <div class="kpis">
+            <div class="divVotosClassic">
+              <p>VOTOS CLASSIC</p>
+            <div class="kpi" id="kpiClassic"></div>
+            </div>
+            <div class="divVotosFreeRunning">
+              <p>VOTOS FREE RUNNING</p>
+            <div class="kpi" id="kpiFreeRunning"></div>
+            </div>
+            <div class="divVotosClimbing">
+              <p>VOTOS CLIMBING</p>
+            <div class="kpi" id="kpiClimbing"></div>
+            </div>
+            <div class="divVotosTotal">
+              <p>TOTAL VOTOS</p>
+            <div class="kpi" id="kpiTotal"></div>
+            </div>
+          </div>
+        </div>
+        <h3 class="maisVotada" id="modalidadeMaisVotada"></h3>
       </div>
     </div>
   </section>

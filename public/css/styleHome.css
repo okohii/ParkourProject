@@ -175,8 +175,8 @@ header video {
   font-size: 25px;
   text-align: center;
   margin-top: -15px;
-  padding-left: 5px;
-  padding-right: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .sectionBenef {
@@ -271,6 +271,11 @@ header video {
   font-size: 40px;
   justify-content: center;
   font-weight: 900;
+}
+
+.sectionMod p {
+  color: #E0E330;
+  font-size: 15px;
 }
 
 .cardMod {
@@ -555,6 +560,114 @@ header video {
   width: 100vh;
   height: 70vh;
   margin-top: -100px;
+}
+
+.kpisDashboard {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 85%;
+  margin-right: 600px;
+  
+}
+
+.kpis {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-direction: row;
+  width: 150%;
+}
+
+.kpi {
+  display: flex;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  color: #031019;
+  font-weight: 900;
+  font-size: 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+#kpiClassic {
+  background-color: #E32D60;
+}
+
+#kpiFreeRunning {
+  background-color: #E0E330;
+}
+
+#kpiClimbing {
+  background-color: #CA440F;
+}
+
+#kpiTotal {
+  display: flex;
+  background-color: #652F8D;
+  margin-left: -260px;
+}
+
+.divVotosClassic {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  color: white;
+  font-size: 14px;
+}
+
+.divVotosFreeRunning {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  font-size: 14px;
+  color: white;
+}
+
+.divVotosClimbing {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  font-size: 14px;
+  color: white;
+}
+
+.divVotosTotal {
+  display: flex;
+  flex-direction: column;
+  font-weight: 900;
+  font-size: 14px;
+  color: white;
+}
+
+.divVotosTotal p {
+  margin-top: 170px;
+  margin-left: -420px;
+  text-align: center;
+}
+
+.divVotosClassic p {
+  margin-top: -4px;
+  margin-left: -10px;
+  text-align: center;
+}
+
+.divVotosFreeRunning p {
+  margin-top: -4px;
+  text-align: center;
+}
+.divVotosClimbing p {
+  margin-top: -4px;
+  text-align: center;
+}
+
+.maisVotada {
+  display: flex;
+  color: white;
+  text-align: center;
+  justify-content: center;
+  margin-top: 35px;
 }
 
 .sectionContato {
