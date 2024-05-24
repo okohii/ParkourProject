@@ -18,9 +18,7 @@ CREATE TABLE usuario (
 	idUsuario INT PRIMARY KEY AUTO_INCREMENT,
 	nomeUsuario VARCHAR(45),
 	emailUsuario VARCHAR(45) UNIQUE,
-	senhaUsuario VARCHAR(45),
-	fkModalidade INT, CONSTRAINT fkMod FOREIGN KEY (fkModalidade) REFERENCES modalidade(idModalidade),
-	fkParceiro INT, CONSTRAINT fkPar FOREIGN KEY (fkParceiro) REFERENCES usuario(idUsuario)
+	senhaUsuario VARCHAR(45)
 );
 
 INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario) VALUES
@@ -37,8 +35,6 @@ SELECT * FROM usuario;
 SELECT * FROM modalidade;
 
 SELECT * FROM voto;
-
-
 
 SELECT COUNT(*) FROM voto WHERE fkModalidade = 1;
 SELECT COUNT(*) FROM voto WHERE fkModalidade = 2;

@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="./css/styleLogin.css">
   <link rel="shortcut icon" href="./assets/jasonpaul.png" type="image/x-icon">
   <script src="./js/login.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css">
   <title>Login</title>
 </head>
 
@@ -23,8 +25,8 @@
           <label for="inputPassword">SENHA:</label>
           <input type="password" id="inputPassword" class="inputOnForm">
         </div>
-        <button class="btnPrimary" onclick="login()">ENTRAR</button>
-        <div />
+        <button class="btnPrimary" id="btnLogin" onclick="login()">ENTRAR</button>
+        <div/>
         <p><a href="cadastro.html">CADASTRAR</a></p>
       </div>
   </main>

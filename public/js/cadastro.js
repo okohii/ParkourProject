@@ -35,8 +35,15 @@ async function cadastro() {
       .then(function (resposta) {
         console.log('ESTOU NO THEN CADASTRAR()"');
         if (resposta.ok) {
-          alert('Registrado com Sucesso');
-          window.location.replace('./login.html')
+          Swal.fire({
+            title: "SUCESSO",
+            text: "REGISTRADO COM SUCESSO!",
+            icon: "success",
+            color: "#E32D60",
+            background: "#031019",
+            showConfirmButton: false,
+          });
+          setTimeout(() => {window.location.replace('./login.html');}, "1500");
         } else {
           inputEmail.value = '';
           inputEmail.placeholder = 'Email ja cadastrado!';

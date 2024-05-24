@@ -1,8 +1,5 @@
 verificarSessao();
 
-var fkParceiro = null;
-var emailParceiro = '';
-
 ScrollReveal().reveal('section', { delay: 300 });
 ScrollReveal().reveal('h1', { delay: 1000 });
 ScrollReveal().reveal('h2', { delay: 700 });
@@ -18,8 +15,32 @@ function verificarSessao() {
 }
 
 function sair() {
-  sessionStorage.clear();
-  window.location.reload();
+  Swal.fire({
+    title: "TEM CERTEZA?",
+    text: "DESEJA DEIXAR A SESSÃO?",
+    icon: "question",
+    color: "#E32D60",
+    showCancelButton: true,
+    confirmButtonColor: "green",
+    cancelButtonColor: "red",
+    confirmButtonText: "DEIXAR SESSÃO!",
+    cancelButtonText: "CANCELAR",
+    background: "#031019",
+  }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire({
+        title: "VOCÊ DEIXOU A SESSÃO!",
+        text: "...",
+        icon: "success",
+        background: "#031019",
+        showConfirmButton: false
+      });
+      setTimeout(() => sessionStorage.clear(), 1500);
+      setTimeout(() => window.location.reload(), 1500);
+      // sessionStorage.clear()
+      // window.location.reload();
+    }
+  });
 }
 
 function entrar() {
@@ -124,19 +145,97 @@ var id = sessionStorage.idUsuario;
 function votarClassic() {
   voto = 1;
   sessionStorage.voto = voto;
-  enviarVoto();
+  if (sessionStorage.idUsuario != undefined) {
+    Swal.fire({
+      title: "TEM CERTEZA?",
+      text: "DESEJA VOTAR NESSA MODALIDADE?",
+      icon: "question",
+      color: "#E32D60",
+      showCancelButton: true,
+      confirmButtonColor: "green",
+      cancelButtonColor: "red",
+      confirmButtonText: "SIM, VOTAR!",
+      cancelButtonText: "CANCELAR",
+      background: "#031019",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "VOCÊ VOTOU!",
+          text: "VOTO COMPUTADO COM SUCESSO!",
+          icon: "success",
+          background: "#031019",
+          showConfirmButton: false
+        });
+        enviarVoto();
+      }
+    });
+  } else {
+      window.location.href = 'http://localhost:3333/login.html'
+  }
 }
 
 function votarFreeRunning() {
   voto = 2;
   sessionStorage.voto = voto;
-  enviarVoto();
+  if (sessionStorage.idUsuario != undefined) {
+    Swal.fire({
+      title: "TEM CERTEZA?",
+      text: "DESEJA VOTAR NESSA MODALIDADE?",
+      icon: "question",
+      color: "#E32D60",
+      showCancelButton: true,
+      confirmButtonColor: "green",
+      cancelButtonColor: "red",
+      confirmButtonText: "SIM, VOTAR!",
+      cancelButtonText: "CANCELAR",
+      background: "#031019",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "VOCÊ VOTOU!",
+          text: "VOTO COMPUTADO COM SUCESSO!",
+          icon: "success",
+          background: "#031019",
+          showConfirmButton: false
+        });
+        enviarVoto();
+      }
+    });
+  } else {
+      window.location.href = 'http://localhost:3333/login.html'
+  }
 }
 
 function votarClimbing() {
   voto = 3;
   sessionStorage.voto = voto;
-  enviarVoto();
+  if (sessionStorage.idUsuario != undefined) {
+    Swal.fire({
+      title: "TEM CERTEZA?",
+      text: "DESEJA VOTAR NESSA MODALIDADE?",
+      icon: "question",
+      color: "#E32D60",
+      showCancelButton: true,
+      confirmButtonColor: "green",
+      cancelButtonColor: "red",
+      confirmButtonText: "SIM, VOTAR!",
+      cancelButtonText: "CANCELAR",
+      background: "#031019",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "VOCÊ VOTOU!",
+          text: "VOTO COMPUTADO COM SUCESSO!",
+          icon: "success",
+          background: "#031019",
+          showConfirmButton: false
+        });
+        enviarVoto();
+      }
+    });
+  } else {
+      window.location.href = 'http://localhost:3333/login.html'
+  }
 }
 
 function enviarVoto() {
@@ -165,10 +264,16 @@ function enviarVoto() {
           // if (voto === 2) document.getElementById('freeRunning').innerHTML = '●';
           // if (voto === 3) document.getElementById('climbing').innerHTML = '●';
           atualizarGrafico();
-          location.reload()
-          // setTimeout(() => apagarCard(), 1500);
+          setTimeout(() => location.reload(), 1500);
         } else {
-          alert("VOCÊ JÁ VOTOU!");
+          Swal.fire({
+            title: "ERRO AO COMPUTAR VOTO!",
+            text: "VOCÊ JA VOTOU!",
+            icon: "error",
+            color: "#E32D60",
+            background: "#031019",
+            confirmButtonColor: "#E32D60"
+          });
         }
       })
       .catch(function (erro) {
@@ -337,7 +442,10 @@ function atualizarGrafico() {
       options: {
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1
+            }
           },
           x: {
             fontSize: 10

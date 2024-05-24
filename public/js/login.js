@@ -1,11 +1,7 @@
 function login() {
-
+  
   var email = inputEmail.value;
   var senha = inputPassword.value;
-
-  if (email == "" || senha == "") {
-    alert('Preencha os dados corretamente');
-  }
 
   console.log("FORM LOGIN: ", email);
   console.log("FORM SENHA: ", senha);
@@ -30,11 +26,25 @@ function login() {
         sessionStorage.emailUsuario = json.emailUsuario;
         sessionStorage.nomeUsuario = json.nomeUsuario;
         sessionStorage.idUsuario = json.idUsuario;
-        window.location.replace('./home.html');
+        setTimeout(() => {window.location.replace('./home.html');}, "1500");
       });
-      alert('SUCESSO');
+      Swal.fire({
+        title: "SUCESSO",
+        text: "AUTENTICADO COM SUCESSO!",
+        icon: "success",
+        showConfirmButton: false,
+        color: "#E32D60",
+        background: "#031019",
+      });
     } else {
-      alert("Houve um erro ao tentar realizar o login!");
+      Swal.fire({
+        title: "ERRO",
+        text: "HOUVE UM ERRO AO TENTAR REALIZAR O LOGIN!",
+        icon: "error",
+        color: "#E32D60",
+        background: "#031019",
+        confirmButtonColor: "#E32D60"
+      });
     }
   })
   .catch(function (erro) {
