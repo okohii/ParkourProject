@@ -1,4 +1,6 @@
 verificarSessao();
+atualizarDados();
+setInterval(atualizarDados, 10000);
 
 ScrollReveal().reveal('section', { delay: 300 });
 ScrollReveal().reveal('h1', { delay: 1000 });
@@ -8,7 +10,6 @@ ScrollReveal().reveal('div', { delay: 500 });
 function verificarSessao() {
   if (sessionStorage.idUsuario == undefined) {
     divBotao.innerHTML = '<button class="btnSair" onclick="entrar()"><p>LOGIN</p></button>';
-    // window.location.href = 'http://localhost:3333/home.html';
   } else {
     divBotao.innerHTML = '<button class="btnSair" onclick="sair()"><p>SAIR</p></button>';
   }
@@ -37,8 +38,6 @@ function sair() {
       });
       setTimeout(() => sessionStorage.clear(), 1500);
       setTimeout(() => window.location.reload(), 1500);
-      // sessionStorage.clear()
-      // window.location.reload();
     }
   });
 }
@@ -121,24 +120,6 @@ window.onscroll = () => {
   });
 }
 
-// function apagarCard() {
-//   cardDashClassic.style.display = 'none';
-//   cardDashFreeRunning.style.display = 'none';
-//   cardDashClimbing.style.display = 'none';
-//   grafico.style.display = 'flex';
-// }
-
-// function mostrarCard() {
-//   cardDashClassic.style.display = 'flex';
-//   cardDashFreeRunning.style.display = 'flex';
-//   cardDashClimbing.style.display = 'flex';
-//   classic.innerHTML = 'CLASSIC';
-//   freeRunning.innerHTML = 'FREE RUNNING';
-//   climbing.innerHTML = 'CLIMBING';
-//   grafico.style.display = 'none';
-// }
-
-
 var voto = 0;
 var id = sessionStorage.idUsuario;
 
@@ -164,7 +145,7 @@ function votarClassic() {
           text: "VOTO COMPUTADO COM SUCESSO!",
           icon: "success",
           background: "#031019",
-          showConfirmButton: false
+          confirmButtonColor: "#E32D60"
         });
         enviarVoto();
       }
@@ -196,7 +177,7 @@ function votarFreeRunning() {
           text: "VOTO COMPUTADO COM SUCESSO!",
           icon: "success",
           background: "#031019",
-          showConfirmButton: false
+          confirmButtonColor: "#E32D60"
         });
         enviarVoto();
       }
@@ -228,7 +209,7 @@ function votarClimbing() {
           text: "VOTO COMPUTADO COM SUCESSO!",
           icon: "success",
           background: "#031019",
-          showConfirmButton: false
+          confirmButtonColor: "#E32D60"
         });
         enviarVoto();
       }
@@ -260,11 +241,8 @@ function enviarVoto() {
           selectClassic();
           selectFreeRunning();
           selectClimbing();
-          // if (voto === 1) document.getElementById('classic').innerHTML = '●';
-          // if (voto === 2) document.getElementById('freeRunning').innerHTML = '●';
-          // if (voto === 3) document.getElementById('climbing').innerHTML = '●';
-          atualizarGrafico();
-          setTimeout(() => location.reload(), 1500);
+          atualizarDados();
+
         } else {
           Swal.fire({
             title: "ERRO AO COMPUTAR VOTO!",
@@ -363,7 +341,14 @@ async function selectClimbing(fkModalidade) {
     });
 }
 
-atualizarGrafico();
+
+function atualizarDados() {
+  selectClassic();
+  selectFreeRunning();
+  selectClimbing();
+  atualizarGrafico();
+}
+
 
 function atualizarGrafico() {
   Promise.all([selectClassic(), selectFreeRunning(), selectClimbing()]).then(() => {
@@ -395,11 +380,13 @@ function atualizarGrafico() {
     console.log(votosLista[1]);
     console.log(votosLista[2]);
 
+
+
     const ctx = document.getElementById('myChart');
 
-    // if (Chart.getChart(ctx)) {
-    //   Chart.getChart(ctx).destroy();
-    // }
+    if (Chart.getChart(ctx)) {
+      Chart.getChart(ctx).destroy();
+    }
 
     new Chart(ctx, {
       type: 'bar',
@@ -455,11 +442,3 @@ function atualizarGrafico() {
     });
   });
 }
-
-
-
-// document.addEventListener("DOMContentLoaded", function() {
-//   var audio = document.getElementById("meuAudio");
-//   audio.volume = 0.02;
-//   audio.play();
-// });
