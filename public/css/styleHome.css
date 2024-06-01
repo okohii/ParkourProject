@@ -831,8 +831,8 @@ header video {
 
 .imgOnu{
   display: flex;
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
   margin: 3px;
   border: #E32D60 solid 2px;
   transform: 0.2;
@@ -841,8 +841,8 @@ header video {
 
 .imgOnu:hover{
   display: flex;
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   margin: 3px;
   border: #E0E330 solid 2px;
   transform: 0.2s;

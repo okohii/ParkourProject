@@ -25,8 +25,8 @@ INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario) VALUES
 	('Gustavo', 'gustavo@gmail.com', '123456789');
 
 CREATE TABLE voto (
-	idVoto INT AUTO_INCREMENT,
-	fkUsuario INT UNIQUE, CONSTRAINT fkUsuarioVoto FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
+	idVoto INT,
+	fkUsuario INT, CONSTRAINT fkUsuarioVoto FOREIGN KEY (fkUsuario) REFERENCES usuario(idUsuario),
 	fkModalidade INT, CONSTRAINT fkModalidadeVoto FOREIGN KEY (fkModalidade) REFERENCES modalidade(idModalidade),
   PRIMARY KEY (idVoto, fkUsuario, fkModalidade)
 );

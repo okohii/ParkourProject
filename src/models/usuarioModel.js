@@ -27,7 +27,7 @@ function votar(id, voto) {
     console.log('Acessei Votar');
 
     var instrucaoSql = `
-        INSERT INTO voto (fkUsuario, fkModalidade) VALUES (${id}, ${voto});`;
+        INSERT INTO voto (idVoto, fkUsuario, fkModalidade) VALUES (${id}, ${id}, ${voto});`;
         return database.executar(instrucaoSql);
 }
 

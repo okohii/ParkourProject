@@ -51,6 +51,8 @@
     <div class="onu">
       <div class="imgOnu"><a href="https://brasil.un.org/pt-br/sdgs/3" target="_blank"><img
             src="./assets/saudeOnu.svg"></a></div>
+      <div class="imgOnu"><a href="https://brasil.un.org/pt-br/sdgs/5" target="_blank"><img
+            src="./assets/SDG-5.svg"></a></div>
     </div>
   </section>
   <!-- <img src="./assets/jasonpaul.png" id="imgJason"> -->
@@ -74,7 +76,7 @@
         </ul>
       </div>
       <div id="cardPsicologico" class="cardBenef">
-        <h2>PSICOLÓGICOS</h2>
+        <h2>EMOCIONAIS</h2>
         <ul>
           <li>DESENVOLVIMENTO DA CORAGEM.</li>
           <br>
@@ -190,7 +192,7 @@
       <p class="copy">&copy; 2024 by Gustavo | All Rights Reserved.</p>
     </div>
 
-    <div class="footer-iconTop">
+    <div onclick="game()" class="footer-iconTop">
       <a href="#header"><i class='bx bx-up-arrow-alt'></i></a>
     </div>
   </footer>
@@ -200,3 +202,15 @@
 </html>
 
 <script src="./js/home.js"></script>
+
+<script>
+
+  function game() {
+    let num = Math.floor(Math.random() * (4 - 1) + 1);
+    console.log(num)
+
+    if (num == 1) {
+      window.open("http://localhost:3333/game.html", "_blank");
+    }
+}
+</script>
