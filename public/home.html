@@ -192,7 +192,11 @@
       <p class="copy">&copy; 2024 by Gustavo | All Rights Reserved.</p>
     </div>
 
-    <div onclick="game()" class="footer-iconTop">
+    <div id="divBtnGame"><button class="btnGame" onclick="game()">
+      <p>GAME</p>
+    </button></div>
+
+    <div class="footer-iconTop">
       <a href="#header"><i class='bx bx-up-arrow-alt'></i></a>
     </div>
   </footer>
@@ -204,13 +208,7 @@
 <script src="./js/home.js"></script>
 
 <script>
-
   function game() {
-    let num = Math.floor(Math.random() * (4 - 1) + 1);
-    console.log(num)
-
-    if (num == 1) {
-      window.open("http://localhost:3333/game.html", "_blank");
-    }
-}
+    window.open("http://localhost:3333/game.html", "_blank");
+  }
 </script>

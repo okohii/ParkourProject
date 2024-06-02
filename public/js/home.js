@@ -246,7 +246,7 @@ function enviarVoto() {
         } else {
           Swal.fire({
             title: "ERRO AO COMPUTAR VOTO!",
-            text: "VOCÊ JÁ VOTOU EM TODAS AS MODALIDADES!",
+            text: "VOCÊ JÁ VOTOU NESSA MODALIDADE!",
             icon: "error",
             color: "#E32D60",
             background: "#031019",

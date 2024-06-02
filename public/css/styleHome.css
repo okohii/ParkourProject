@@ -468,6 +468,60 @@ header video {
   font-weight: bolder;
 }
 
+.btnGame {
+  display: flex;
+  background: none;
+  color: white;
+  font-weight: bolder;
+  margin-left: -213px;
+  width: 120px;
+  height: 30px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: 1s linear;
+  cursor: pointer;
+  border-style: solid;
+  border-color: #E0E330;
+  position: relative;
+}
+
+.btnGame:hover {
+  display: flex;
+  border-style: solid;
+  border-color: #E0E330;
+  color: black;
+  font-weight: bolder;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  transition: 1s;
+}
+
+.btnGame::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #E0E330;
+  z-index: 0;
+  transition:  transform 0.5s;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+  transform: scaleY(0);
+}
+
+.btnGame:hover::before {
+  transform: scaleY(1);
+}
+
+.btnGame p {
+  z-index: 1;
+  font-weight: bolder;
+}
+
 #contentDash {
   display: flex;
   flex-direction: column;
