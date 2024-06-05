@@ -9,16 +9,14 @@ function autenticar(email, senha) {
     return database.executar(instrucaoSql);
 }
 
-// Coloque os mesmos parâmetros aqui. Vá para a var instrucaoSql
 function cadastrar(nome, email, senha) {
-    console.log("Model cadastrar chamado com: ", {nome, email, senha}); // Adicione logs
+    console.log("Model cadastrar chamado com: ", {nome, email, senha});
 
-    // Ajuste a query SQL conforme a estrutura do banco de dados
     var instrucaoSql = `
         INSERT INTO usuario (nomeUsuario, emailUsuario, senhaUsuario) VALUES ('${nome}', '${email}', '${senha}');
     `;
 
-    console.log("SQL Query: ", instrucaoSql); // Adicione logs
+    console.log("SQL Query: ", instrucaoSql);
 
     return database.executar(instrucaoSql);
 }

@@ -278,7 +278,7 @@ async function selectClassic(fkModalidade) {
       if (resposta.ok) {
         return resposta.json().then(json => {
           console.log('Retorno json voteClassic: ', json);
-          votosClassic = parseInt(json[0]['COUNT(fkModalidade)']);;  // Armazena o valor na variável global
+          votosClassic = parseInt(json[0]['COUNT(fkModalidade)']);
           votosLista[0] = votosClassic;
           console.log('votosClassic: ', votosClassic);
         });
@@ -303,7 +303,7 @@ async function selectFreeRunning(fkModalidade) {
       if (resposta.ok) {
         return resposta.json().then(json => {
           console.log('Retorno json votosFreeRunning: ', json);
-          votosFreeRunning = parseInt(json[0]['COUNT(fkModalidade)']);  // Armazena o valor na variável global
+          votosFreeRunning = parseInt(json[0]['COUNT(fkModalidade)']);
           votosLista[1] = votosFreeRunning;
           console.log('votosFreeRunning: ', votosFreeRunning);
         });
@@ -328,7 +328,7 @@ async function selectClimbing(fkModalidade) {
       if (resposta.ok) {
         return resposta.json().then(json => {
           console.log('Retorno json voteClimbing: ', json);
-          votosClimbing = parseInt(json[0]['COUNT(fkModalidade)']);  // Armazena o valor na variável global
+          votosClimbing = parseInt(json[0]['COUNT(fkModalidade)']);
           votosLista[2] = votosClimbing;
           console.log('votosClimbing: ', votosClimbing);
         });
@@ -397,10 +397,10 @@ function atualizarGrafico() {
           data: [valorClassic],
           borderWidth: 1,
           backgroundColor: [
-            '#E32D60', // Cor da primeira barra (CLASSIC)
+            '#E32D60',
           ],
           borderColor: [
-            '#E32D60',   // Cor da borda da primeira barra (CLASSIC)
+            '#E32D60',
           ],
         },
         {
@@ -408,10 +408,10 @@ function atualizarGrafico() {
           data: [valorFreeRunning],
           borderWidth: 1,
           backgroundColor: [
-            '#E0E330',  // Cor da segunda barra (FREE RUNNING)
+            '#E0E330',
           ],
           borderColor: [
-            '#E0E330',   // Cor da borda da segunda barra (FREE RUNNING)
+            '#E0E330',
           ],
         },
         {
@@ -419,10 +419,10 @@ function atualizarGrafico() {
           data: [valorClimbing],
           borderWidth: 1,
           backgroundColor: [
-            '#CA440f'   // Cor da terceira barra (CLIMBING)
+            '#CA440f'
           ],
           borderColor: [
-            '#CA440F'    // Cor da borda da terceira barra (CLIMBING)
+            '#CA440F'
           ],
         }]
       },

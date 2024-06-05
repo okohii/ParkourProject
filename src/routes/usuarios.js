@@ -7,7 +7,6 @@ router.get("/home", function (req, res) {
     res.render("home");
 });
 
-//Recebendo os dados do html e direcionando para a função cadastrar de usuarioController.js
 router.post("/cadastrar", function (req, res) {
     usuarioController.cadastrar(req, res);
 });
