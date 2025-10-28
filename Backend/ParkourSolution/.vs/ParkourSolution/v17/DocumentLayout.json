@@ -1,0 +1,68 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\okohi\\OneDrive\\Documentos\\Projects\\ParkourProject\\Backend\\ParkourSolution\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{05793280-86AA-2306-92C5-8B32A2B63ED9}|..\\Backend.csproj|c:\\users\\okohi\\onedrive\\documentos\\projects\\parkourproject\\backend\\migrations\\20251023015618_creatingdatabase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05793280-86AA-2306-92C5-8B32A2B63ED9}|..\\Backend.csproj|c:\\users\\okohi\\onedrive\\documentos\\projects\\parkourproject\\backend\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{05793280-86AA-2306-92C5-8B32A2B63ED9}|..\\Backend.csproj|c:\\users\\okohi\\onedrive\\documentos\\projects\\parkourproject\\backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\okohi\\OneDrive\\Documentos\\Projects\\ParkourProject\\Backend\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "..\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\okohi\\OneDrive\\Documentos\\Projects\\ParkourProject\\Backend\\Migrations\\AppDbContextModelSnapshot.cs",
+              "RelativeToolTip": "..\\Migrations\\AppDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T01:56:40.71Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20251023015618_CreatingDataBase.cs",
+              "DocumentMoniker": "C:\\Users\\okohi\\OneDrive\\Documentos\\Projects\\ParkourProject\\Backend\\Migrations\\20251023015618_CreatingDataBase.cs",
+              "RelativeDocumentMoniker": "..\\Migrations\\20251023015618_CreatingDataBase.cs",
+              "ToolTip": "C:\\Users\\okohi\\OneDrive\\Documentos\\Projects\\ParkourProject\\Backend\\Migrations\\20251023015618_CreatingDataBase.cs",
+              "RelativeToolTip": "..\\Migrations\\20251023015618_CreatingDataBase.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA4AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T01:56:19.111Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\okohi\\OneDrive\\Documentos\\Projects\\ParkourProject\\Backend\\Program.cs",
+              "RelativeDocumentMoniker": "..\\Program.cs",
+              "ToolTip": "C:\\Users\\okohi\\OneDrive\\Documentos\\Projects\\ParkourProject\\Backend\\Program.cs",
+              "RelativeToolTip": "..\\Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABAAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-23T01:55:26.211Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

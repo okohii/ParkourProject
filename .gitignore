@@ -3,3 +3,8 @@ node_modules
 package-lock.json
 
 .github
+
+.old
+
+/Backend/.env
+/Frontend/.env
